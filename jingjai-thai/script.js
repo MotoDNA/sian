@@ -23,7 +23,7 @@
         links.forEach(function (a) { a.toggleAttribute('aria-current', a.getAttribute('href') === '#' + en.target.id); if (a.hasAttribute('aria-current')) a.setAttribute('aria-current', 'true'); });
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    ['menu', 'story', 'visit'].forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
+    ['menu', 'reviews', 'story', 'visit'].forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
   }
 
   /* ---------- 메뉴 3D 띠 ---------- */

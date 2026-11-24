@@ -5,6 +5,8 @@
 @font-face{font-family:"NanumPen";src:url("fonts/NanumPen.woff2") format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"Paperlogy";src:url("fonts/Paperlogy-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
 @font-face{font-family:"Jua";src:url("fonts/Jua.woff2") format("woff2");font-weight:400;font-display:swap}
+/* 주아에 없는 글자(똠)만 프리텐다드 굵은체로 채움 */
+@font-face{font-family:"Jua";src:url("fonts/Pretendard-Bold.woff2") format("woff2");font-weight:400;font-display:swap;unicode-range:U+B620}
 @font-face{font-family:"Mitr";src:url("fonts/Mitr-Medium.woff2") format("woff2");font-weight:500;font-display:swap}
 
 :root{
@@ -135,6 +137,32 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 .hot.l1{width:16px}.hot.l2{width:32px}.hot.l3{width:48px}
 .hand-note{font-family:var(--hand);font-size:28px;color:var(--chili);margin-top:34px;transform:rotate(-1.5deg);display:inline-block}
 @media (max-width:760px){.board{grid-template-columns:1fr}}
+
+/* ===== 리뷰 ===== */
+.reviews{background:var(--basil);border-top:1px solid var(--basil-3)}
+.rv-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px 40px;margin-bottom:34px}
+.kw{list-style:none;display:flex;flex-wrap:wrap;gap:8px;max-width:560px}
+.kw li{font-size:14px;padding:7px 14px;border-radius:999px;background:var(--basil-2);border:1px solid var(--basil-3);color:var(--rice)}
+.kw li::before{content:"✓";color:var(--lime);margin-right:6px;font-weight:700}
+.rv-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.rv{position:relative;margin:0;background:var(--rice);color:var(--basil);border-radius:22px;padding:28px 28px 22px;display:flex;flex-direction:column;gap:14px;box-shadow:0 18px 40px -24px rgba(0,0,0,.6);transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+.rv:hover{transform:translateY(-4px) rotate(-.4deg)}
+.rv:nth-child(even):hover{transform:translateY(-4px) rotate(.4deg)}
+.rv::before{content:"“";position:absolute;right:22px;top:4px;font-family:var(--title);font-size:84px;line-height:1;color:var(--chili);opacity:.18}
+.rv-top{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px}
+.stars{color:var(--mango);letter-spacing:2px;font-size:17px;-webkit-text-stroke:.4px #c98400}
+.rv-meta{font-size:13px;color:#4a5a4f;background:rgba(20,48,31,.07);padding:3px 10px;border-radius:999px}
+.rv blockquote{margin:0;font-size:17px;line-height:1.75;color:#21352a}
+.rv mark{background:linear-gradient(transparent 58%,rgba(201,226,101,.85) 58%);color:inherit;font-weight:700;padding:0 1px}
+.rv figcaption{display:flex;align-items:center;gap:10px;font-size:14px;margin-top:auto}
+.rv-nick{font-family:var(--cute);font-size:17px}
+.rv-src{color:#5d6b61;font-size:13px}
+.rv-dish{list-style:none;display:flex;gap:14px;border-top:1px dashed rgba(20,48,31,.25);padding-top:12px}
+.rv-dish li{display:flex;align-items:center;gap:6px;font-family:var(--cute);font-size:15px}
+.rv-dish img{width:44px;height:44px;object-fit:contain;filter:drop-shadow(0 4px 4px rgba(20,48,31,.25))}
+.rv-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;margin-top:26px}
+.rv-foot p{font-size:14px;color:var(--rice-dim)}
+@media (max-width:760px){.rv-grid{grid-template-columns:1fr}.rv{padding:24px 20px 18px}.rv blockquote{font-size:16px}}
 
 /* ===== 이야기 ===== */
 .story-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(24px,5vw,80px);align-items:center}
