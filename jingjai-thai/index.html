@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>찡짜이 타이푸드 · 진심으로 만든 태국 한 그릇</title>
+<meta name="description" content="찡짜이 타이푸드 — 푸팟퐁커리, 팟타이, 팟까파오무쌉, 꾸이띠아오 똠얌까지. 태국 현지의 맛을 진심으로 만드는 동네 태국음식점. 메뉴, 영업시간, 오시는 길, 전화 예약.">
+<meta property="og:title" content="찡짜이 타이푸드">
+<meta property="og:description" content="진심으로 끓이고, 볶고, 무칩니다. 동네에서 만나는 태국 한 그릇.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23173524'/%3E%3Cpath d='M18 38 Q32 52 46 38 Z' fill='%23f4ecd8'/%3E%3Cpath d='M30 20 Q40 14 44 24 Q36 22 30 20Z' fill='%23e8432e'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- 교체: 실제 영업 전 지울 것 — 샘플 띠 없음(실제 고객 건). 주소·전화·영업시간·가격은 사장님 확인 후 교체 -->
+<header class="hd" id="top">
+  <a class="logo" href="#top" aria-label="찡짜이 타이푸드 처음으로">
+    <span class="logo-th" lang="th">จริงใจ</span><span class="logo-ko">찡짜이 타이푸드</span>
+  </a>
+  <button class="burger" aria-label="메뉴 열기" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
+  <nav id="nav" class="nav" aria-label="주요 메뉴">
+    <a href="#menu">메뉴</a>
+    <a href="#story">이야기</a>
+    <a href="#visit">오시는 길</a>
+    <a class="nav-call" href="tel:000-0000-0000"><!-- 교체: 전화번호 -->전화 예약</a>
+  </nav>
+</header>
+
+<main>
+<!-- ① 첫 화면: 메뉴 3D 띠 -->
+<section class="hero" aria-label="대표 메뉴 둘러보기">
+  <p class="hero-eyebrow"><span lang="th">จริงใจ</span> 찡짜이는 태국말로 ‘진심’</p>
+  <h1 class="hero-title">진심으로 끓이고,<br class="m-only"> 볶고, 무칩니다.</h1>
+
+  <div class="stage" id="stage">
+    <div class="spot" aria-hidden="true"></div>
+    <ul class="track" id="track">
+      <!-- 메뉴 사진: 네이버 플레이스 업체 등록 사진을 누끼(배경 제거)한 것. 사장님 원본 고해상도 사진을 받으면 같은 이름으로 교체 -->
+      <li class="dish" style="--top:0.217"><a href="#m-noodle" class="dish-btn"><span class="dish-name"><b>꾸이띠아오</b><i lang="th">ก๋วยเตี๋ยว</i></span><img src="images/dish-noodle.webp" alt="꾸이띠아오" width="800" height="800" draggable="false"></a></li>
+      <li class="dish" style="--top:0.351"><a href="#m-rice" class="dish-btn"><span class="dish-name"><b>카오팟꿍</b><i lang="th">ข้าวผัดกุ้ง</i></span><img src="images/dish-khaopad-kung.webp" alt="카오팟꿍" width="800" height="800" draggable="false"></a></li>
+      <li class="dish" style="--top:0.355"><a href="#m-noodle" class="dish-btn"><span class="dish-name"><b>팟타이</b><i lang="th">ผัดไทย</i></span><img src="images/dish-padthai.webp" alt="팟타이" width="800" height="800" draggable="false"></a></li>
+      <li class="dish" style="--top:0.343" data-start><a href="#m-noodle" class="dish-btn"><span class="dish-name"><b>푸팟퐁커리</b><i lang="th">ปูผัดผงกะหรี่</i></span><img src="images/dish-poo.webp" alt="푸팟퐁커리" width="800" height="800" draggable="false"></a></li>
+      <li class="dish" style="--top:0.350"><a href="#m-rice" class="dish-btn"><span class="dish-name"><b>팟까파오무쌉</b><i lang="th">ผัดกะเพราหมูสับ</i></span><img src="images/dish-kaprao.webp" alt="팟까파오무쌉" width="800" height="800" draggable="false"></a></li>
+      <li class="dish" style="--top:0.216"><a href="#m-noodle" class="dish-btn"><span class="dish-name"><b>꾸이띠아오 똠얌</b><i lang="th">ก๋วยเตี๋ยวต้มยำ</i></span><img src="images/dish-tomyum-noodle.webp" alt="꾸이띠아오 똠얌" width="800" height="800" draggable="false" loading="lazy"></a></li>
+      <li class="dish" style="--top:0.352"><a href="#m-rice" class="dish-btn"><span class="dish-name"><b>카오팟뿌</b><i lang="th">ข้าวผัดปู</i></span><img src="images/dish-khaopad-poo.webp" alt="카오팟뿌" width="800" height="800" draggable="false" loading="lazy"></a></li>
+      <li class="dish" style="--top:0.281"><a href="#m-side" class="dish-btn"><span class="dish-name"><b>카이찌아오톳</b><i lang="th">ไข่เจียว</i></span><img src="images/dish-khaijiao.webp" alt="카이찌아오톳" width="800" height="800" draggable="false" loading="lazy"></a></li>
+      <li class="dish" style="--top:0.301"><a href="#m-side" class="dish-btn"><span class="dish-name"><b>모닝글로리 튀김</b><i lang="th">ผักบุ้งทอด</i></span><img src="images/dish-mg-fried.webp" alt="모닝글로리 튀김" width="800" height="800" draggable="false" loading="lazy"></a></li>
+      <li class="dish" style="--top:0.370"><a href="#m-side" class="dish-btn"><span class="dish-name"><b>모닝글로리</b><i lang="th">ผัดผักบุ้ง</i></span><img src="images/dish-mg-stirfry.webp" alt="모닝글로리" width="800" height="800" draggable="false" loading="lazy"></a></li>
+      <li class="dish" style="--top:0.264"><a href="#m-side" class="dish-btn"><span class="dish-name"><b>톳만꿍</b><i lang="th">ทอดมันกุ้ง</i></span><img src="images/dish-tod-mun.webp" alt="톳만꿍" width="800" height="800" draggable="false" loading="lazy"></a></li>
+      <li class="dish" style="--top:0.015"><a href="#m-drink" class="dish-btn"><span class="dish-name"><b>땡모빤</b><i lang="th">แตงโมปั่น</i></span><img src="images/dish-taengmo.webp" alt="땡모빤" width="800" height="800" draggable="false" loading="lazy"></a></li>
+    </ul>
+  </div>
+
+  <p class="hero-hint" aria-hidden="true"><span class="pc-only">마우스를 좌우로 움직여 보세요</span><span class="m-only">옆으로 밀어 보세요</span></p>
+  <div class="hero-cta">
+    <a class="btn btn-chili" href="tel:000-0000-0000">☎ 전화로 예약하기</a>
+    <a class="btn btn-line" href="#menu">전체 메뉴 보기</a>
+  </div>
+  <p class="hero-today">오늘 <b>11:00 – 21:00</b> · 브레이크 15:00 – 17:00<!-- 교체: 영업시간 --></p>
+</section>
+
+<!-- ② 메뉴판 -->
+<section class="sec menu" id="menu" aria-labelledby="menu-h">
+  <div class="wrap">
+    <header class="sec-head">
+      <p class="kicker">MENU · <span lang="th">เมนู</span></p>
+      <h2 id="menu-h">메뉴판</h2>
+      <p class="sec-lead"><b>대표</b> 표시가 붙은 네 가지부터 맛보세요. 가격은 매장 사정에 따라 달라질 수 있어요.</p>
+    </header>
+    <nav class="chips" aria-label="메뉴 분류">
+      <a href="#m-noodle">커리·쌀국수</a><a href="#m-rice">밥</a><a href="#m-side">튀김·볶음</a><a href="#m-drink">음료</a>
+    </nav>
+    <!-- 메뉴·가격: 네이버 플레이스 메뉴(2026.04.13 업데이트) 기준 -->
+    <div class="board">
+      <div class="col" id="m-noodle">
+        <h3>커리 · 쌀국수</h3>
+        <dl>
+          <div class="it"><img class="thumb" src="images/dish-poo.webp" alt="" width="800" height="800" loading="lazy"><dt>푸팟퐁커리 <span class="rep">대표</span></dt><dd class="p">14,000</dd><dd class="d">태국식 게살/게 튀김 볶음 카레</dd></div>
+          <div class="it"><img class="thumb" src="images/dish-padthai.webp" alt="" width="800" height="800" loading="lazy"><dt>팟타이 <span class="rep">대표</span></dt><dd class="p">12,000</dd><dd class="d">태국식 볶음 쌀국수</dd></div>
+          <div class="it"><img class="thumb" src="images/dish-tomyum-noodle.webp" alt="" width="800" height="800" loading="lazy"><dt>꾸이띠아오 똠얌 <span class="rep">대표</span></dt><dd class="p">12,000</dd><dd class="d">태국식 똠얌 쌀국수</dd></div>
+          <div class="it"><img class="thumb" src="images/dish-noodle.webp" alt="" width="800" height="800" loading="lazy"><dt>꾸이띠아오</dt><dd class="p">11,000</dd><dd class="d">태국식 쌀국수</dd></div>
+        </dl>
+      </div>
+      <div class="col" id="m-rice">
+        <h3>밥</h3>
+        <dl>
+          <div class="it"><img class="thumb" src="images/dish-kaprao.webp" alt="" width="800" height="800" loading="lazy"><dt>팟까파오무쌉 <span class="rep">대표</span></dt><dd class="p">11,000</dd><dd class="d">태국식 돼지고기 바질 볶음</dd></div>
+          <div class="it"><img class="thumb" src="images/dish-khaopad-kung.webp" alt="" width="800" height="800" loading="lazy"><dt>카오팟꿍</dt><dd class="p">11,000</dd><dd class="d">태국식 새우 볶음밥</dd></div>
+          <div class="it"><img class="thumb" src="images/dish-khaopad-poo.webp" alt="" width="800" height="800" loading="lazy"><dt>카오팟뿌</dt><dd class="p">11,000</dd><dd class="d">태국식 게살 볶음밥</dd></div>
+        </dl>
+      </div>
+      <div class="col" id="m-side">
+        <h3>튀김 · 볶음</h3>
+        <dl>
+          <div class="it"><img class="thumb" src="images/dish-khaijiao.webp" alt="" width="800" height="800" loading="lazy"><dt>카이찌아오톳</dt><dd class="p">9,000</dd><dd class="d">태국식 바삭한 계란 오믈렛</dd></div>
+          <div class="it"><img class="thumb" src="images/dish-mg-fried.webp" alt="" width="800" height="800" loading="lazy"><dt>모닝글로리 튀김</dt><dd class="p">9,000</dd><dd class="d">태국식 공심채 튀김</dd></div>
+          <div class="it"><img class="thumb" src="images/dish-mg-stirfry.webp" alt="" width="800" height="800" loading="lazy"><dt>모닝글로리</dt><dd class="p">8,000</dd><dd class="d">태국식 공심채 볶음</dd></div>
+          <div class="it"><img class="thumb" src="images/dish-tod-mun.webp" alt="" width="800" height="800" loading="lazy"><dt>톳만꿍</dt><dd class="p">7,500</dd><dd class="d">태국식 다진 새우 튀김</dd></div>
+        </dl>
+      </div>
+      <div class="col" id="m-drink">
+        <h3>음료</h3>
+        <dl>
+          <div class="it"><img class="thumb" src="images/dish-taengmo.webp" alt="" width="800" height="800" loading="lazy"><dt>땡모빤</dt><dd class="p">6,000</dd><dd class="d">태국식 수박 주스</dd></div>
+        </dl>
+      </div>
+    </div>
+    <p class="hand-note">처음 오셨다면 푸팟퐁커리부터 :)</p>
+  </div>
+</section>
+
+<!-- ③ 이야기 -->
+<section class="sec story" id="story" aria-labelledby="story-h">
+  <div class="wrap story-grid">
+    <div class="story-word" aria-hidden="true"><span lang="th">จริงใจ</span></div>
+    <div>
+      <p class="kicker">STORY · <span lang="th">เรื่องราว</span></p>
+      <h2 id="story-h">찡짜이,<br>진심이라는 이름</h2>
+      <p class="story-text">태국에서는 꾸밈없고 믿을 수 있는 사람을 ‘찡짜이’하다고 말해요. 저희는 손님 앞에 내놓는 한 그릇이 그 말에 어울리길 바랍니다.<!-- 교체: 사장님 이야기 --></p>
+      <ol class="vows">
+        <li><b>소스</b><span>피시소스·타마린드·팜슈가, 태국 재료로 맛을 냅니다.</span></li>
+        <li><b>허브</b><span>바질·레몬그라스·고수는 그날그날 손질해요.</span></li>
+        <li><b>불맛</b><span>주문이 들어오면 그때 웍에 볶습니다.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ④ 오시는 길·예약 -->
+<section class="sec visit" id="visit" aria-labelledby="visit-h">
+  <div class="wrap visit-grid">
+    <div>
+      <p class="kicker">VISIT · <span lang="th">มาหาเรา</span></p>
+      <h2 id="visit-h">오시는 길 · 예약</h2>
+      <p class="sec-lead">전화 한 통이면 자리 잡아 둘게요. 단체는 하루 전 예약 부탁드려요.</p>
+      <div class="visit-btns">
+        <a class="btn btn-chili" href="tel:000-0000-0000">☎ 000-0000-0000<!-- 교체: 전화번호 --></a>
+        <a class="btn btn-line" href="https://naver.me/xSBcB9Sx" target="_blank" rel="noopener">네이버 지도 · 예약</a>
+      </div>
+    </div>
+    <div class="info">
+      <table>
+        <tr><th scope="row">주소</th><td>(주소 입력)<!-- 교체: 주소 --></td></tr>
+        <tr><th scope="row">영업</th><td class="num">11:00 – 21:00</td></tr>
+        <tr><th scope="row">브레이크</th><td class="num">15:00 – 17:00</td></tr>
+        <tr><th scope="row">라스트오더</th><td class="num">20:30</td></tr>
+        <tr><th scope="row">휴무</th><td>매주 월요일<!-- 교체: 휴무일 --></td></tr>
+      </table>
+      <p class="info-note">※ 영업시간·휴무는 사장님 확인 후 교체 예정</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="ft">
+  <div class="wrap ft-in">
+    <p class="ft-logo"><span lang="th">จริงใจ</span> 찡짜이 타이푸드</p>
+    <nav aria-label="사이트맵"><a href="#top">처음으로</a><a href="#menu">메뉴</a><a href="#story">이야기</a><a href="#visit">오시는 길</a></nav>
+    <p class="ft-biz">상호 찡짜이타이푸드 · 대표 000 · 사업자등록번호 000-00-00000 · 주소 (입력) · 전화 000-0000-0000<!-- 교체: 사업자 정보 --></p>
+  </div>
+</footer>
+
+<div class="mbar" aria-label="빠른 연락">
+  <a href="tel:000-0000-0000">☎ 전화 예약</a>
+  <a href="https://naver.me/xSBcB9Sx" target="_blank" rel="noopener">길찾기</a>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
