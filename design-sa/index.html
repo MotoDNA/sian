@@ -437,6 +437,19 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .c-top.over.solid:before{opacity:0}
 .c-top.over.solid .lg>img{display:block}.c-top.over.solid .lgw{display:none}
 .c-top.over~.hx-c{height:100svh}
+
+/* 시안 B: 아래 현장명은 지금 슬라이드 하나만 가운데에, 슬라이드와 함께 서서히 바뀜 */
+.hx[data-mode="single"] .htabs{display:block;height:200px;padding:0}
+.hx[data-mode="single"] .ht{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);opacity:0;pointer-events:none;transition:opacity 1.2s ease;width:max-content;max-width:90vw}
+.hx[data-mode="single"] .ht.on{opacity:1;pointer-events:auto}
+.hx[data-mode="single"] .ht.on .go:after{display:none}
+.hx[data-mode="single"] .ht .ic{height:52px;opacity:1;transition:none}
+.hx[data-mode="single"] .ht b:before{content:'';display:block;width:22px;height:1px;background:#fff;margin:2px auto 8px}
+.hx[data-mode="single"] .ht .go{height:auto;opacity:1;margin-top:8px;transition:none}
+@media(min-width:701px){.vb .back{bottom:auto;top:84px}}
+.hx-b .hx-chips{bottom:40px}
+@media(max-width:760px){.hx-b .hx-chips{bottom:auto;top:calc(100% - 330px)}}
+@media(max-width:700px){.hx[data-mode="single"] .ht{bottom:100px}.hx-b .hx-chips{top:calc(100% - 300px)}}
 </style>
 </head>
 <body>
@@ -628,7 +641,7 @@ function hxBg(b,eager){return typeof b==='string'?im(b,'',null,eager):'<div clas
 function hxBuild(cls,S,mode,intro){return '<section class="hx '+cls+'" data-hx data-mode="'+mode+'">'+S.map(function(s,i){return '<div class="hs'+(i?'':' cur')+'">'+hxBg(s.bg,i<1)+'<span class="wm" aria-hidden="true">'+s.wm+'</span>'+(s.title?'<div class="ht-c"><h2>'+s.title+'</h2><a href="'+s.href+'">'+s.cta+'</a></div>':'')+'</div>'}).join('')+(intro||'')+'<button class="ha pv" aria-label="이전"><svg viewBox="0 0 24 48" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M20 4L4 24l16 20"/></svg></button><button class="ha nx" aria-label="다음"><svg viewBox="0 0 24 48" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 4l16 20L4 44"/></svg></button><div class="htabs">'+S.map(function(s,i){return '<div role="button" tabindex="0" class="ht'+(i?'':' on')+'" data-i="'+i+'"><span class="ic">'+ICON+'</span><b>'+s.name+'</b><small>'+s.sub+'</small><a class="go" href="'+s.href+'">'+s.cta+'</a></div>'}).join('')+'</div></section>'}
 function bHX(){var S=['mw','ds','mi','bl','uj'].map(function(id){var p=P[id];return {bg:{mw:'mw05',ds:'ds07',mi:'mi01',bl:'bl09',uj:'uj14'}[id],wm:p.n+'PY',name:esc(p.name),sub:p.py+' · '+esc(p.area.replace(/^서울\s*/,'')),href:'#b-'+id,cta:'현장 보기'}});
  var intro='<div class="hx-intro wrap"><h1>우리 집과 같은 평형부터<br>먼저 보세요.</h1><p>2006년부터 마포 망원동에서. 꼭 필요한 공사에 예산을 쓰고, 오래 쓰는 마감으로 정리합니다.</p></div><div class="hx-chips wrap"><a href="#b-works-30">30평대 사례</a><a href="#b-works-40">40평대 사례</a><a class="pri" href="#b-contact">무료 상담 신청</a></div>';
- return hxBuild('hx-b',S,'all',intro)}
+ return hxBuild('hx-b',S,'single',intro)}
 function cHX(){var bg={living:'ds07',kitchen:'uj14',hall:['bl01','mi03','uj06'],bath:['bl14','sr13','bl16'],room:'mi14'},wm={living:'Living room',kitchen:'Kitchen',hall:'Entrance',bath:'Bathroom',room:'Room'};
  var S=ROOMS.map(function(r){var n=roomAll(r[0]).length;return {bg:bg[r[0]],wm:wm[r[0]],name:r[1],sub:n+'장',href:'#c-room-'+r[0],cta:'사진 '+n+'장 보기'}});
  return hxBuild('hx-c',S,'three','')}
