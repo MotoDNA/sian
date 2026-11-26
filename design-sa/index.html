@@ -116,9 +116,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .foot .flogo{width:170px;margin-bottom:18px}
 .foot .biz span{display:inline-block;margin-right:16px}
 .foot .ext a{margin-right:16px;text-decoration:underline;text-underline-offset:3px}
-.gal{columns:2;column-gap:10px}
-.gal img{width:100%;margin-bottom:10px;break-inside:avoid}
-@media(max-width:600px){.gal{columns:1}}
+.gal{display:flex;flex-wrap:wrap;gap:10px}
+.gal:after{content:'';flex-grow:999999}
+.gal img{flex:var(--r) 1 calc(var(--r) * clamp(200px,24vw,440px));width:0;height:auto;aspect-ratio:var(--ar);object-fit:cover}
 .pager{display:flex;justify-content:space-between;gap:20px;padding:56px 0;border-top:1px solid rgba(128,128,128,.25);margin-top:80px;font-size:15px}
 .pager a{display:flex;flex-direction:column}
 .pager small{opacity:.55;font-size:11px;letter-spacing:.18em}
@@ -375,6 +375,51 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .ig-cell{min-width:0}
 .ig-cell iframe{max-width:100%!important;min-width:0!important}
 .ig-note{margin-top:18px;font-size:13px;opacity:.6}
+
+/* ---------- 시안 B·C 메인 슬라이드 ---------- */
+.hx{position:relative;height:calc(100svh - 70px);min-height:600px;overflow:hidden;color:#fff;background:#1c2421;touch-action:pan-y}
+.hx-c{height:calc(100svh - 66px)}
+.hx .hs{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease}
+.hx .hs.cur{opacity:1}
+.hx .hs>img,.hx .hs .trio{position:absolute;inset:0;width:100%;height:100%}
+.hx .hs>img{object-fit:cover;transform:scale(1.06);transition:transform 8s linear}
+.hx .hs.cur>img{transform:scale(1)}
+.hx .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:#1c2421}
+.hx .trio img{width:100%;height:100%;object-fit:cover;min-width:0}
+@media(max-width:700px){.hx .trio{grid-template-columns:1fr}.hx .trio img:not(:nth-child(2)){display:none}}
+.hx .hs:after{content:'';position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,0) 30%,rgba(18,30,26,.15) 52%,rgba(18,30,26,.88) 100%)}
+.hx .wm{position:absolute;z-index:2;left:50%;top:52%;transform:translate(-50%,-50%) scale(1.04);font-family:'Noto Serif KR','Cormorant Garamond',serif;font-weight:300;font-size:clamp(110px,24vw,420px);line-height:1;letter-spacing:-.02em;white-space:nowrap;color:rgba(255,255,255,.3);pointer-events:none;transition:transform 2s ease}
+.hx-c .wm{font-family:'Cormorant Garamond',serif;font-size:clamp(120px,26vw,460px)}
+.hx .hs.cur .wm{transform:translate(-50%,-50%)}
+.hx-intro{position:absolute;z-index:4;left:0;top:clamp(80px,20vh,220px);max-width:900px;pointer-events:none}
+.hx-intro h1{font-family:'Noto Serif KR',serif;font-weight:400;font-size:clamp(32px,4.6vw,68px);line-height:1.18;letter-spacing:-.02em;text-shadow:0 2px 24px rgba(0,0,0,.25)}
+.hx-intro p{margin-top:18px;max-width:420px;font-size:15px;opacity:.9;text-shadow:0 1px 10px rgba(0,0,0,.3)}
+.hx-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px;pointer-events:auto}
+.hx-chips a{border:1px solid rgba(255,255,255,.6);border-radius:40px;padding:10px 18px;font-size:14px;backdrop-filter:blur(6px);background:rgba(255,255,255,.08)}
+.hx-chips a.pri{background:#fff;color:#133126;border-color:#fff;font-weight:600}
+.ht-c{position:absolute;z-index:3;left:0;right:0;top:46%;transform:translateY(-50%);text-align:center}
+.ht-c h2{font-family:'Noto Serif KR',serif;font-weight:400;font-size:clamp(38px,5vw,76px);line-height:1.1;text-shadow:0 2px 20px rgba(0,0,0,.25)}
+.ht-c a{display:inline-block;margin-top:14px;font-size:12px;letter-spacing:.18em;color:#e8b86a;font-weight:600}
+.hx .ha{position:absolute;z-index:5;top:50%;transform:translateY(-50%);width:54px;height:80px;color:#fff;opacity:.8;display:grid;place-items:center}
+.hx .ha:hover{opacity:1}.hx .ha svg{width:24px;height:48px}
+.hx .ha.pv{left:clamp(8px,2.4vw,40px)}.hx .ha.nx{right:clamp(8px,2.4vw,40px)}
+.htabs{position:absolute;z-index:5;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding:0 clamp(16px,4vw,64px) 26px}
+.ht{display:flex;flex-direction:column;align-items:center;text-align:center;color:#fff;opacity:.82;min-width:0;padding:6px 4px;transition:opacity .4s}
+.ht:hover{opacity:1}
+.ht .ic{width:44px;height:0;overflow:hidden;opacity:0;transition:height .5s,opacity .5s}
+.ht .ic svg{width:44px;height:44px}
+.ht b{font-family:'Noto Serif KR',serif;font-weight:400;font-size:clamp(15px,1.4vw,21px);white-space:nowrap}
+.ht small{font-size:12px;opacity:.75}
+.ht .go{height:0;overflow:hidden;opacity:0;font-size:11px;letter-spacing:.16em;color:#e8b86a;font-weight:700;transition:opacity .5s}
+.ht.on{opacity:1}
+.ht.on .ic{height:52px;opacity:1}
+.ht.on b:before{content:'';display:block;width:22px;height:1px;background:#fff;margin:2px auto 8px}
+.ht.on .go{height:auto;opacity:1;margin-top:8px;position:relative;padding-bottom:6px}
+.ht.on .go:after{content:'';position:absolute;left:50%;top:100%;width:1px;height:30px;background:#e8b86a}
+.hx[data-mode="three"] .htabs{justify-content:center;gap:clamp(30px,8vw,130px)}
+.hx[data-mode="three"] .ht[data-pos="off"]{display:none}
+.hx[data-mode="three"] .ht[data-pos="prev"]{order:1}.hx[data-mode="three"] .ht[data-pos="cur"]{order:2}.hx[data-mode="three"] .ht[data-pos="next"]{order:3}
+@media(max-width:760px){.hx-b .htabs{overflow-x:auto;justify-content:flex-start;gap:22px;scrollbar-width:none}.hx-b .ht{flex:0 0 auto}.hx .ha{top:42%}.hx-intro{top:70px}.hx .wm{top:44%}}
 </style>
 </head>
 <body>
@@ -460,7 +505,7 @@ function bPrep(){return '<div class="b-box"><h3>상담 전에 준비하면 좋�
 function bRev(){return '<div class="b-box b-rev"><h3>오늘의집 계약자 리뷰</h3><div class="big">4.9 <span style="font-size:16px;font-weight:500;opacity:.6">/ 5 · 리뷰 15건</span></div><div class="chips">'+CHIPS.map(function(c){return '<span>'+c+'</span>'}).join('')+'</div><blockquote>“'+REV_Q+'”</blockquote><cite>2026년 11월 기준</cite></div>'}
 function bCta(){return '<section class="wrap"><div class="b-cta"><div><h2>우리 집 평형부터 알려 주세요.</h2><p style="opacity:.75;margin-top:6px">비슷한 평형 사례와 함께 상담해 드립니다.</p></div><div class="row"><a class="pri" href="#b-contact">상담 신청</a><a href="tel:01032520086">전화 '+PHONE+'</a></div></div></section>'}
 V.b={
- home:function(){var p=P.mw;return bTop('')+'<section class="wrap b-hero"><div><div class="eyebrow" style="letter-spacing:.12em">마포 · 은평 · 서대문 아파트 인테리어</div><h1 style="margin-top:14px">우리 집과 <em>같은 평형</em>부터<br>먼저 보세요.</h1><p class="sub">2006년부터 마포 망원동에서. 꼭 필요한 공사에 예산을 쓰고, 오래 쓰는 마감으로 정리합니다.</p><div class="b-py"><a href="#b-works-30"><b>30평대</b><span>'+ORDER.filter(function(i){return band(P[i].n)==='30'}).length+'곳 보기</span></a><a href="#b-works-40"><b>40평대</b><span>'+ORDER.filter(function(i){return band(P[i].n)==='40'}).length+'곳 보기</span></a><a href="#b-works"><b>전체</b><span>'+ORDER.length+'곳 보기</span></a></div><div class="b-quick"><a class="pri" href="#b-contact">무료 상담 신청</a><a href="#b-insta">인스타그램 보기</a></div></div><a class="b-ph" href="#b-mw">'+im('mw05','망원 동원데자뷰 거실',null,true)+'<span class="badge"><b>★ 4.9</b>오늘의집 리뷰 15건</span><span class="cap"><span><b>'+esc(p.name)+'</b><br><span style="opacity:.65">'+p.n+'평 · '+esc(p.area)+'</span></span><span>자세히 →</span></span></a></section>'+
+ home:function(){return bTop('')+bHX()+
   '<section class="wrap"><div class="b-stats"><div><b>2006년~</b><span>사업자등록 · 마포 망원동</span></div><div><b>52건</b><span>오늘의집 포트폴리오 (2026.11)</span></div><div><b>★ 4.9</b><span>계약자 리뷰 15건 (2026.11)</span></div><div><b>A/S</b><span>리뷰 9건이 "AS 잘해줘요"</span></div></div></section>'+
   '<section class="wrap sec"><h2 class="t">평형별 시공 사례</h2><p class="lead">비슷한 평형의 집을 먼저 보시면 우리 집 공사 범위를 정하기 쉬워요.</p>'+bFilter()+'<div class="b-cards" data-list>'+ORDER.map(function(id){return bCard(P[id])}).join('')+'</div></section>'+
   '<section class="wrap sec"><h2 class="t">이렇게 진행합니다</h2><p class="lead">처음 인테리어를 하셔도 순서대로 따라오시면 됩니다.</p>'+bSteps()+'</section>'+
@@ -481,7 +526,7 @@ var RCOVER={living:'ds07',kitchen:'mw12',hall:'bl01',bath:'bl13',room:'mi15'};
 function cRows(){return '<div class="c-rows">'+ORDER.map(function(id,i){var p=P[id];return '<a class="c-row" href="#c-'+id+'"><span class="no">'+(i<9?'0':'')+(i+1)+'</span><b>'+esc(p.name)+'</b><span>'+p.n+'평</span><span class="ar">'+esc(p.area)+'</span><span class="ths">'+['living','kitchen','hall'].map(function(r){var k=pick(p,r,1)[0];return k?'<img src="img/'+k+'.jpg" alt="" loading="lazy">':''}).join('')+'</span></a>'}).join('')+'</div>'}
 function cCta(){return '<section class="c-cta"><h2>보고 싶은 공간이<br>정해지셨나요?</h2><a class="btn" href="#c-contact">상담 신청 →</a></section>'}
 V.c={
- home:function(){return cTop('')+'<section class="wrap c-hero"><h1>현관부터 욕실까지,<br><span>공간별로</span> 비교하세요.</h1><div class="sub"><p>디자인SA가 고친 서울 서북권 아파트 '+ORDER.length+'곳의 사진을 거실·주방·현관·욕실·방으로 나눠 모았습니다.</p><p style="text-align:right"><b>2006년~</b> 마포 망원동<br><b>★ 4.9</b> 오늘의집 리뷰 15건 (2026.11)</p></div><div class="c-rooms">'+ROOMS.map(function(r){return '<a class="c-room" href="#c-room-'+r[0]+'">'+im(RCOVER[r[0]],r[1])+'<span class="lb"><b>'+r[1]+'</b><span>'+roomAll(r[0]).length+'장 →</span></span></a>'}).join('')+'</div></section>'+
+ home:function(){return cTop('')+cHX()+
   '<section class="wrap sec"><div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap"><h2 class="t">주방만 모아 보면</h2><a href="#c-room-kitchen" style="font-weight:700;border-bottom:2px solid">주방 전체 보기 →</a></div><div class="c-cmp">'+['mw','bl','uj','mi'].map(function(id){var k=pick(P[id],'kitchen',1)[0];return '<a href="#c-'+id+'">'+im(k,P[id].name+' 주방')+'<span>'+esc(P[id].name)+' · '+P[id].n+'평</span></a>'}).join('')+'</div></section>'+
   '<section class="wrap sec"><h2 class="t">현장별로 보기</h2>'+cRows()+'</section>'+
   '<section class="wrap sec"><h2 class="t">숫자로 보는 디자인SA</h2><div class="c-num"><div><b>2006</b><span>마포 망원동에서 시작</span></div><div><b>52</b><span>오늘의집 포트폴리오 (2026.11)</span></div><div><b>4.9</b><span>계약자 리뷰 15건 평균 (2026.11)</span></div><div><b>4단계</b><span>상담 → 실측 → 견적 → 시공·A/S</span></div></div></section>'+cCta()+foot()},
@@ -507,7 +552,7 @@ function render(){timers.forEach(clearInterval);timers=[];offs.forEach(function(
   else if(pg!=='home'&&pg!=='project'&&pg!=='room'&&M[pg])html=M[pg]();
   else if(P[pg])html=M.project(P[pg]);else html=M.home();
   html+='<a class="back" href="#home">← 시안 목록</a>'}
- app.innerHTML=html;wire(app);wireZoom(app);lbClose();loadIG();window.scrollTo(0,0)}
+ app.innerHTML=html;wire(app);wireZoom(app);lbClose();loadIG();wireHX(app);window.scrollTo(0,0)}
 window.addEventListener('hashchange',render);
 var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 function wire(root){
@@ -536,7 +581,8 @@ var lbX=null,lbY=0;
 lb.addEventListener('pointerdown',function(e){if(e.target.closest('button'))return;lbX=e.clientX;lbY=e.clientY});
 lb.addEventListener('pointerup',function(e){if(lbX===null)return;var dx=e.clientX-lbX,dy=e.clientY-lbY;lbX=null;if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy)){lbShow(lbI+(dx<0?1:-1));return}if(Math.abs(dx)<10&&Math.abs(dy)<10)lbClose()});
 document.addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;if(e.key==='ArrowLeft')lbShow(lbI-1);else if(e.key==='ArrowRight')lbShow(lbI+1);else if(e.key==='Escape')lbClose()});
-function wireZoom(root){var ims=[].slice.call(root.querySelectorAll('.pj-hero img,.gal img,.b-main img,.c-sec .ims img'));if(!ims.length)return;
+function wireZoom(root){root.querySelectorAll('.gal img').forEach(function(im){var k=(im.getAttribute('src')||'').replace('img/','').replace('.jpg',''),d=DIM[k]||[3,2];im.style.setProperty('--r',(d[0]/d[1]).toFixed(3));im.style.setProperty('--ar',d[0]+'/'+d[1])});
+ var ims=[].slice.call(root.querySelectorAll('.pj-hero img,.gal img,.b-main img,.c-sec .ims img'));if(!ims.length)return;
  var keys=[];ims.forEach(function(im){var k=(im.getAttribute('src')||'').replace('img/','').replace('.jpg','');im.dataset.k=k;if(keys.indexOf(k)<0)keys.push(k)});
  ims.forEach(function(im){im.classList.add('zoomable');im.tabIndex=0;im.setAttribute('role','button');
   var go=function(){lbOpen(keys,keys.indexOf(im.dataset.k),im)};
@@ -548,6 +594,24 @@ function loadIG(){if(!document.querySelector('.instagram-media'))return;if(windo
 V.a.insta=function(){return aTop('insta',true)+'<section class="wrap sec" style="padding-top:60px"><div class="eyebrow">Instagram</div><h2 class="t">인스타그램</h2>'+instaBody()+'</section>'+foot(true)};
 V.b.insta=function(){return bTop('insta')+'<section class="wrap" style="padding-top:44px"><h2 class="t">인스타그램</h2><p class="lead">현장 사진과 디테일을 인스타그램에도 올리고 있어요.</p><div class="b-box" style="margin-top:24px">'+instaBody()+'</div></section>'+bCta()+foot()+bDock()};
 V.c.insta=function(){return cTop('insta')+'<section class="wrap" style="padding-top:44px"><h2 class="t">인스타그램</h2>'+instaBody()+'</section>'+cCta()+foot()};
+/* ---- 시안 B·C 메인 슬라이드: 큰 사진 + 배경의 큰 글자 + 아래 목록(누르면 해당 슬라이드) ---- */
+var ICON='<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M6 19L20 7l14 12"/><path d="M10 16v17h20V16"/><path d="M17 33v-9h6v9"/></svg>';
+function hxBg(b,eager){return typeof b==='string'?im(b,'',null,eager):'<div class="trio">'+b.map(function(k){return im(k,'',null,eager)}).join('')+'</div>'}
+function hxBuild(cls,S,mode,intro){return '<section class="hx '+cls+'" data-hx data-mode="'+mode+'">'+S.map(function(s,i){return '<div class="hs'+(i?'':' cur')+'">'+hxBg(s.bg,i<1)+'<span class="wm" aria-hidden="true">'+s.wm+'</span>'+(s.title?'<div class="ht-c"><h2>'+s.title+'</h2><a href="'+s.href+'">'+s.cta+'</a></div>':'')+'</div>'}).join('')+(intro||'')+'<button class="ha pv" aria-label="이전"><svg viewBox="0 0 24 48" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M20 4L4 24l16 20"/></svg></button><button class="ha nx" aria-label="다음"><svg viewBox="0 0 24 48" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 4l16 20L4 44"/></svg></button><div class="htabs">'+S.map(function(s,i){return '<div role="button" tabindex="0" class="ht'+(i?'':' on')+'" data-i="'+i+'"><span class="ic">'+ICON+'</span><b>'+s.name+'</b><small>'+s.sub+'</small><a class="go" href="'+s.href+'">'+s.cta+'</a></div>'}).join('')+'</div></section>'}
+function bHX(){var S=['mw','ds','mi','bl','uj'].map(function(id){var p=P[id];return {bg:{mw:'mw05',ds:'ds07',mi:'mi01',bl:'bl09',uj:'uj14'}[id],wm:p.n+'PY',name:esc(p.name),sub:p.n+'평 · '+esc(p.area),href:'#b-'+id,cta:'현장 보기'}});
+ var intro='<div class="hx-intro wrap"><h1>우리 집과 같은 평형부터<br>먼저 보세요.</h1><p>2006년부터 마포 망원동에서. 꼭 필요한 공사에 예산을 쓰고, 오래 쓰는 마감으로 정리합니다.</p><div class="hx-chips"><a href="#b-works-30">30평대 사례</a><a href="#b-works-40">40평대 사례</a><a class="pri" href="#b-contact">무료 상담 신청</a></div></div>';
+ return hxBuild('hx-b',S,'all',intro)}
+function cHX(){var bg={living:'ds07',kitchen:'uj14',hall:['bl01','mi03','uj06'],bath:['bl14','sr13','bl16'],room:'mi15'},wm={living:'Living',kitchen:'Kitchen',hall:'Entrance',bath:'Bathroom',room:'Room'};
+ var S=ROOMS.map(function(r){var n=roomAll(r[0]).length;return {bg:bg[r[0]],wm:wm[r[0]],title:r[1],name:r[1],sub:n+'장',href:'#c-room-'+r[0],cta:'사진 '+n+'장 보기'}});
+ return hxBuild('hx-c',S,'three','')}
+function wireHX(root){var h=root.querySelector('[data-hx]');if(!h)return;var ss=h.querySelectorAll('.hs'),ts=h.querySelectorAll('.ht'),n=ss.length,c=0,three=h.dataset.mode==='three';
+ function go(k){ss[c].classList.remove('cur');ts[c].classList.remove('on');c=(k+n)%n;ss[c].classList.add('cur');ts[c].classList.add('on');
+  if(three)ts.forEach(function(t,i){var d=(i-c+n)%n;t.dataset.pos=d===0?'cur':d===1?'next':d===n-1?'prev':'off'})}
+ ts.forEach(function(t,i){t.addEventListener('click',function(e){if(e.target.closest('.go'))return;go(i);restart()});t.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.target.closest('.go')){go(i);restart()}})});
+ h.querySelector('.pv').addEventListener('click',function(){go(c-1);restart()});h.querySelector('.nx').addEventListener('click',function(){go(c+1);restart()});
+ var sx=null;h.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse')sx=e.clientX});h.addEventListener('pointerup',function(e){if(sx===null)return;var dx=e.clientX-sx;sx=null;if(Math.abs(dx)>50){go(c+(dx<0?1:-1));restart()}});
+ var tm=null;function restart(){if(RM)return;clearInterval(tm);tm=setInterval(function(){go(c+1)},6500);timers.push(tm)}
+ go(0);restart()}
 var pop=document.getElementById('pop');
 function openPop(v,p){var k=p.hero||p.cover;pop.querySelector('.im').src='img/'+k+(HX[k]?'x':'')+'.jpg';pop.querySelector('.im').alt=p.name;pop.querySelector('b').textContent=p.name+' · '+p.py;pop.querySelector('small').textContent=p.area+' · '+p.line;pop.querySelector('.gol').href='#'+v+'-'+p.id;pop.classList.add('open');pop.querySelector('.x').focus()}
 function closePop(){pop.classList.remove('open')}
