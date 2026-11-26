@@ -427,6 +427,16 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .hx[data-mode="three"] .ht[data-pos="off"]{display:none}
 .hx[data-mode="three"] .ht[data-pos="prev"]{order:1}.hx[data-mode="three"] .ht[data-pos="cur"]{order:2}.hx[data-mode="three"] .ht[data-pos="next"]{order:3}
 @media(max-width:760px){.hx-b .htabs{overflow-x:auto;justify-content:flex-start;gap:22px;scrollbar-width:none}.hx-b .ht{flex:0 0 auto}.hx .ha{top:42%}.hx-intro{top:70px}.hx .wm{top:44%}}
+
+/* 시안 C 메인: 메뉴바를 사진 위에 (스크롤하면 흰 바탕으로) */
+.c-top.over{position:fixed;left:0;right:0;top:0;background:transparent;border-bottom-color:transparent;color:#fff;transition:background .4s,color .4s,border-color .4s}
+.c-top.over:before{content:'';position:absolute;inset:0 0 -30px;background:linear-gradient(rgba(0,0,0,.35),transparent);pointer-events:none;transition:opacity .4s;z-index:-1}
+.c-top.over nav a{opacity:.85}.c-top.over nav a:hover{opacity:1}
+.c-top.over .lg>img{display:none}.c-top .lgw img{height:26px;width:auto}
+.c-top.over.solid{background:#fff;color:#111;border-bottom-color:#111}
+.c-top.over.solid:before{opacity:0}
+.c-top.over.solid .lg>img{display:block}.c-top.over.solid .lgw{display:none}
+.c-top.over~.hx-c{height:100svh}
 </style>
 </head>
 <body>
@@ -527,13 +537,13 @@ V.b={
 };
 
 /* ================= C : Room by Room ================= */
-function cTop(cur){return '<header class="c-top wrap"><a class="lg" href="#c">'+LOGO_D+'</a><nav><a href="#c-room-living"'+(cur==='room'?' class="on"':'')+'>공간별</a><a href="#c-works"'+(cur==='works'?' class="on"':'')+'>현장별</a><a class="opt" href="#c-insta"'+(cur==='insta'?' class="on"':'')+'>인스타</a><a class="opt" href="#c-about"'+(cur==='about'?' class="on"':'')+'>소개</a><a href="#c-contact"'+(cur==='contact'?' class="on"':'')+'>상담</a></nav></header>'}
+function cTop(cur,over){return '<header class="c-top wrap'+(over?' over':'')+'"'+(over?' data-over':'')+'><a class="lg" href="#c">'+LOGO_D+(over?'<span class="lgw">'+LOGO_L+'</span>':'')+'</a><nav><a href="#c-room-living"'+(cur==='room'?' class="on"':'')+'>공간별</a><a href="#c-works"'+(cur==='works'?' class="on"':'')+'>현장별</a><a class="opt" href="#c-insta"'+(cur==='insta'?' class="on"':'')+'>인스타</a><a class="opt" href="#c-about"'+(cur==='about'?' class="on"':'')+'>소개</a><a href="#c-contact"'+(cur==='contact'?' class="on"':'')+'>상담</a></nav></header>'}
 function roomAll(r){var out=[];ORDER.forEach(function(id){P[id].all.forEach(function(k){if(RT[k]===r)out.push([k,id])})});return out}
 var RCOVER={living:'ds07',kitchen:'mw12',hall:'bl01',bath:'bl13',room:'mi15'};
 function cRows(){return '<div class="c-rows">'+ORDER.map(function(id,i){var p=P[id];return '<a class="c-row" href="#c-'+id+'"><span class="no">'+(i<9?'0':'')+(i+1)+'</span><b>'+esc(p.name)+'</b><span>'+p.n+'평</span><span class="ar">'+esc(p.area)+'</span><span class="ths">'+['living','kitchen','hall'].map(function(r){var k=pick(p,r,1)[0];return k?'<img src="img/'+k+'.jpg" alt="" loading="lazy">':''}).join('')+'</span></a>'}).join('')+'</div>'}
 function cCta(){return '<section class="c-cta"><h2>보고 싶은 공간이<br>정해지셨나요?</h2><a class="btn" href="#c-contact">상담 신청 →</a></section>'}
 V.c={
- home:function(){return cTop('')+cHX()+
+ home:function(){return cTop('',true)+cHX()+
   '<section class="wrap sec"><div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap"><h2 class="t">주방만 모아 보면</h2><a href="#c-room-kitchen" style="font-weight:700;border-bottom:2px solid">주방 전체 보기 →</a></div><div class="c-cmp">'+['mw','bl','uj','mi'].map(function(id){var k=pick(P[id],'kitchen',1)[0];return '<a href="#c-'+id+'">'+im(k,P[id].name+' 주방')+'<span>'+esc(P[id].name)+' · '+P[id].n+'평</span></a>'}).join('')+'</div></section>'+
   '<section class="wrap sec"><h2 class="t">현장별로 보기</h2>'+cRows()+'</section>'+
   '<section class="wrap sec"><h2 class="t">숫자로 보는 디자인SA</h2><div class="c-num"><div><b>2006</b><span>마포 망원동에서 시작</span></div><div><b>52</b><span>오늘의집 포트폴리오 (2026.11)</span></div><div><b>4.9</b><span>계약자 리뷰 15건 평균 (2026.11)</span></div><div><b>4단계</b><span>상담 → 실측 → 견적 → 시공·A/S</span></div></div></section>'+cCta()+foot()},
@@ -559,7 +569,7 @@ function render(){timers.forEach(clearInterval);timers=[];offs.forEach(function(
   else if(pg!=='home'&&pg!=='project'&&pg!=='room'&&M[pg])html=M[pg]();
   else if(P[pg])html=M.project(P[pg]);else html=M.home();
   html+='<a class="back" href="#home">← 시안 목록</a>'}
- app.innerHTML=html;wire(app);wireZoom(app);lbClose();loadIG();wireHX(app);window.scrollTo(0,0)}
+ app.innerHTML=html;wire(app);wireZoom(app);lbClose();loadIG();wireHX(app);wireOver(app);window.scrollTo(0,0)}
 window.addEventListener('hashchange',render);
 var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 function wire(root){
@@ -622,6 +632,7 @@ function bHX(){var S=['mw','ds','mi','bl','uj'].map(function(id){var p=P[id];ret
 function cHX(){var bg={living:'ds07',kitchen:'uj14',hall:['bl01','mi03','uj06'],bath:['bl14','sr13','bl16'],room:'mi14'},wm={living:'Living room',kitchen:'Kitchen',hall:'Entrance',bath:'Bathroom',room:'Room'};
  var S=ROOMS.map(function(r){var n=roomAll(r[0]).length;return {bg:bg[r[0]],wm:wm[r[0]],name:r[1],sub:n+'장',href:'#c-room-'+r[0],cta:'사진 '+n+'장 보기'}});
  return hxBuild('hx-c',S,'three','')}
+function wireOver(root){var h=root.querySelector('[data-over]');if(!h)return;var hx=root.querySelector('[data-hx]');var f=function(){h.classList.toggle('solid',window.scrollY>(hx?hx.offsetHeight-h.offsetHeight:10))};window.addEventListener('scroll',f,{passive:true});offs.push(function(){window.removeEventListener('scroll',f)});f()}
 function wireHX(root){var h=root.querySelector('[data-hx]');if(!h)return;var ss=h.querySelectorAll('.hs'),ts=h.querySelectorAll('.ht'),n=ss.length,c=0,three=h.dataset.mode==='three';
  function go(k){ss[c].classList.remove('cur');ts[c].classList.remove('on');c=(k+n)%n;ss[c].classList.add('cur');ts[c].classList.add('on');
   if(three)ts.forEach(function(t,i){var d=(i-c+n)%n;t.dataset.pos=d===0?'cur':d===1?'next':d===n-1?'prev':'off'})}
