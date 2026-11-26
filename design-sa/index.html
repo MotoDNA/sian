@@ -389,7 +389,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 @media(max-width:700px){.hx .trio{grid-template-columns:1fr}.hx .trio img:not(:nth-child(2)){display:none}}
 .hx .hs:after{content:'';position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,0) 30%,rgba(18,30,26,.15) 52%,rgba(18,30,26,.88) 100%)}
 .hx .wm{position:absolute;z-index:2;left:50%;top:52%;transform:translate(-50%,-50%) scale(1.04);font-family:'Noto Serif KR','Cormorant Garamond',serif;font-weight:300;font-size:clamp(110px,24vw,420px);line-height:1;letter-spacing:-.02em;white-space:nowrap;color:rgba(255,255,255,.3);pointer-events:none;transition:transform 2s ease}
-.hx-c .wm{font-family:'Cormorant Garamond',serif;font-size:clamp(120px,26vw,460px)}
+.hx-c .wm{font-family:'Cormorant Garamond',serif;font-size:clamp(96px,20.8vw,368px)}
 .hx .hs.cur .wm{transform:translate(-50%,-50%)}
 .hx-intro{position:absolute;z-index:4;left:0;top:clamp(80px,20vh,220px);max-width:900px;pointer-events:none}
 .hx-intro h1{font-family:'Noto Serif KR',serif;font-weight:400;font-size:clamp(32px,4.6vw,68px);line-height:1.18;letter-spacing:-.02em;text-shadow:0 2px 24px rgba(0,0,0,.25)}
@@ -601,8 +601,8 @@ function hxBuild(cls,S,mode,intro){return '<section class="hx '+cls+'" data-hx d
 function bHX(){var S=['mw','ds','mi','bl','uj'].map(function(id){var p=P[id];return {bg:{mw:'mw05',ds:'ds07',mi:'mi01',bl:'bl09',uj:'uj14'}[id],wm:p.n+'PY',name:esc(p.name),sub:p.n+'평 · '+esc(p.area),href:'#b-'+id,cta:'현장 보기'}});
  var intro='<div class="hx-intro wrap"><h1>우리 집과 같은 평형부터<br>먼저 보세요.</h1><p>2006년부터 마포 망원동에서. 꼭 필요한 공사에 예산을 쓰고, 오래 쓰는 마감으로 정리합니다.</p><div class="hx-chips"><a href="#b-works-30">30평대 사례</a><a href="#b-works-40">40평대 사례</a><a class="pri" href="#b-contact">무료 상담 신청</a></div></div>';
  return hxBuild('hx-b',S,'all',intro)}
-function cHX(){var bg={living:'ds07',kitchen:'uj14',hall:['bl01','mi03','uj06'],bath:['bl14','sr13','bl16'],room:'mi15'},wm={living:'Living',kitchen:'Kitchen',hall:'Entrance',bath:'Bathroom',room:'Room'};
- var S=ROOMS.map(function(r){var n=roomAll(r[0]).length;return {bg:bg[r[0]],wm:wm[r[0]],title:r[1],name:r[1],sub:n+'장',href:'#c-room-'+r[0],cta:'사진 '+n+'장 보기'}});
+function cHX(){var bg={living:'ds07',kitchen:'uj14',hall:['bl01','mi03','uj06'],bath:['bl14','sr13','bl16'],room:'mi16'},wm={living:'Living room',kitchen:'Kitchen',hall:'Entrance',bath:'Bathroom',room:'Room'};
+ var S=ROOMS.map(function(r){var n=roomAll(r[0]).length;return {bg:bg[r[0]],wm:wm[r[0]],name:r[1],sub:n+'장',href:'#c-room-'+r[0],cta:'사진 '+n+'장 보기'}});
  return hxBuild('hx-c',S,'three','')}
 function wireHX(root){var h=root.querySelector('[data-hx]');if(!h)return;var ss=h.querySelectorAll('.hs'),ts=h.querySelectorAll('.ht'),n=ss.length,c=0,three=h.dataset.mode==='three';
  function go(k){ss[c].classList.remove('cur');ts[c].classList.remove('on');c=(k+n)%n;ss[c].classList.add('cur');ts[c].classList.add('on');
