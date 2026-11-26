@@ -131,6 +131,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .a-hero .sl.cur{opacity:1}
 .a-hero .sl img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 7s linear}
 .a-hero .sl.cur img{transform:scale(1)}
+.a-hero .sl.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:#24211f}
+.a-hero .sl.trio img{min-width:0}
+@media(max-width:700px){.a-hero .sl.trio{grid-template-columns:1fr}.a-hero .sl.trio img:not(:nth-child(2)){display:none}}
 .a-hero:before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(rgba(0,0,0,.42),rgba(0,0,0,.05) 38%,rgba(0,0,0,0) 60%,rgba(0,0,0,.25));pointer-events:none}
 .a-word{position:absolute;z-index:2;left:50%;top:clamp(56px,9vh,110px);transform:translateX(-50%);width:min(64vw,980px);filter:drop-shadow(0 4px 24px rgba(0,0,0,.25))}
 .a-word img{width:100%}
@@ -345,10 +348,38 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .c-sec .ims{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:8px}
 .c-sec .ims img{width:100%;aspect-ratio:var(--r);object-fit:cover}
 @media(max-width:700px){.c-sec{grid-template-columns:1fr}}
+
+/* ---------- 현장 사진 크게 보기 (라이트박스) ---------- */
+.zoomable{cursor:zoom-in}
+.lb{position:fixed;inset:0;z-index:96;background:rgba(10,12,11,.94);display:none;align-items:center;justify-content:center;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.lb.open{display:flex}
+.lb .lim{max-width:calc(100vw - 160px);max-height:calc(100vh - 110px);object-fit:contain;cursor:zoom-out;transition:opacity .25s}
+.lb .nav{position:absolute;top:50%;transform:translateY(-50%);width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;display:grid;place-items:center;transition:background .3s}
+.lb .nav:hover{background:rgba(255,255,255,.26)}
+.lb .nav svg{width:26px;height:26px}
+.lb .pv{left:clamp(8px,2vw,28px)}.lb .nx{right:clamp(8px,2vw,28px)}
+.lb .cnt{position:absolute;left:0;right:0;bottom:22px;text-align:center;color:#fff;font-size:13px;letter-spacing:.14em;opacity:.75}
+.lb .cl{position:absolute;right:12px;top:8px;width:52px;height:52px;font-size:32px;color:#fff}
+@media(max-width:700px){.lb .lim{max-width:100vw;max-height:calc(100vh - 140px)}.lb .nav{top:auto;bottom:58px;transform:none;width:48px;height:48px}.lb .pv{left:calc(50% - 64px)}.lb .nx{right:calc(50% - 64px)}}
+
+/* ---------- 인스타그램 ---------- */
+.ig-head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin:6px 0 26px}
+.ig-id{display:flex;align-items:center;gap:14px}
+.ig-id b{display:block;font-size:17px}
+.ig-id small{font-size:13px;opacity:.65}
+.ig-av{width:56px;height:56px;border-radius:50%;background:#0f1f19;color:#ece6dc;display:grid;place-items:center;font-family:'Cormorant Garamond',serif;font-size:22px;flex:0 0 auto;box-shadow:0 0 0 2px #fff,0 0 0 4px #c9a86a}
+.ig-follow{border-radius:40px}
+.ig-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:start}
+@media(max-width:960px){.ig-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.ig-grid{grid-template-columns:1fr}}
+.ig-cell{min-width:0}
+.ig-cell iframe{max-width:100%!important;min-width:0!important}
+.ig-note{margin-top:18px;font-size:13px;opacity:.6}
 </style>
 </head>
 <body>
 <div id="app"></div>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="현장 사진 크게 보기"><button class="cl" aria-label="닫기">×</button><button class="nav pv" aria-label="이전 사진"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 5l-7 7 7 7"/></svg></button><img class="lim" alt=""><button class="nav nx" aria-label="다음 사진"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 5l7 7-7 7"/></svg></button><div class="cnt"></div></div>
 <div class="pop" id="pop" role="dialog" aria-modal="true" aria-label="현장 사진 크게 보기"><button class="x" aria-label="닫기">×</button><div class="in"><img class="im" alt=""><div class="row"><div><b></b><small></small></div><a class="gol" href="#">현장 자세히 보기 →</a></div></div></div>
 <script>
 var DIM={"ur10":[1333,2000],"sr16":[1332,2000],"ds12":[2000,1333],"ds14":[2000,1333],"sr04":[1332,2000],"uj04":[1333,2000],"dm05":[1333,2000],"mi13":[2000,1333],"bl07":[2000,1332],"mw01":[2000,1334],"mw16":[2000,1334],"dm11":[2000,1333],"ur11":[2000,1333],"sr08":[2000,1332],"sr03":[1332,2000],"uj08":[2000,1333],"sr11":[1332,2000],"bl04":[1332,2000],"uj13":[2000,1333],"uj10":[2000,1333],"mi12":[2000,1333],"dm13":[1333,2000],"uj05":[1333,2000],"mi15":[2000,1333],"ur15":[2000,1333],"uj16":[2000,1333],"mw02":[2000,1334],"mi14":[2000,1333],"sr10":[2000,1332],"mw15":[2000,1334],"sr13":[1332,2000],"uj03":[1333,2000],"bl03":[1332,2000],"ds09":[2000,1333],"ur07":[2000,1333],"sr01":[2000,1332],"ds02":[1333,2000],"sr02":[1332,2000],"mw12":[2000,1334],"mw03":[2000,1334],"mi04":[1333,2000],"sr15":[1332,2000],"sr09":[2000,1332],"bl09":[2000,1332],"bl11":[1332,2000],"sr12":[2000,1332],"dm09":[2000,1333],"mi07":[2000,1333],"ur05":[1333,2000],"mw11":[2000,1334],"bl10":[2000,1332],"dm02":[1333,2000],"ur03":[1333,2000],"mw09":[2000,1333],"uj06":[1333,2000],"sr14":[1332,2000],"ds01":[2000,1333],"ur16":[2000,1333],"mi01":[2000,1333],"ds03":[1333,2000],"mw10":[2000,1333],"uj02":[1333,2000],"bl01":[1332,2000],"ds04":[1333,2000],"mw07":[2000,1333],"uj01":[2000,1333],"dm04":[1333,2000],"bl02":[1332,2000],"mi10":[2000,1333],"mi16":[2000,1333],"dm12":[2000,1333],"bl12":[2000,1332],"mw08":[2000,1333],"dm10":[2000,1333],"mw04":[1334,2000],"ds16":[2000,1333],"ds05":[1333,2000],"bl06":[2000,1332],"mw14":[2000,1334],"mi11":[2000,1333],"ur02":[1333,2000],"bl08":[2000,1332],"ur04":[1333,2000],"sr06":[2000,1332],"mw05":[2000,1333],"bl05":[2000,1332],"bl14":[1332,2000],"mw13":[2000,1334],"dm07":[2000,1333],"ds15":[2000,1333],"ur06":[1333,2000],"ds13":[2000,1333],"ur09":[1333,2000],"mi02":[2000,1333],"uj07":[1333,2000],"ds11":[2000,1333],"ur14":[2000,1333],"ur13":[2000,1333],"bl15":[1332,2000],"mi03":[1333,2000],"uj15":[2000,1333],"uj11":[2000,1333],"ur08":[2000,1333],"ur01":[2000,1333],"mi08":[2000,1333],"ur12":[2000,1333],"uj09":[2000,1333],"ds06":[2000,1333],"ds08":[2000,1333],"ds10":[2000,1333],"mw06":[2000,1333],"bl16":[1332,2000],"bl13":[1332,2000],"dm16":[2000,1333],"dm01":[2000,1333],"uj14":[2000,1333],"sr05":[1332,2000],"dm15":[2000,1333],"ds07":[2000,1333],"dm06":[2000,1333],"mi09":[2000,1333],"uj12":[2000,1333],"dm08":[2000,1333],"sr07":[2000,1332],"dm03":[1333,2000]};
@@ -395,14 +426,14 @@ function nextPrev(v,p){var i=ORDER.indexOf(p.id),a=P[ORDER[(i-1+ORDER.length)%OR
 function ohLink(p){return 'https://ohou.se/projects/'+p.oh}
 
 /* ================= A : Signature ================= */
-function aTop(cur,solid){var m=[['about','회사소개'],['works','시공사례'],['contact','상담신청']];return '<header class="a-top wrap'+(solid?' solid':'')+'" id="atop"><a class="sm" href="#a">'+LOGO_L+'</a><nav>'+m.map(function(x){return '<a href="#a-'+x[0]+'"'+(cur===x[0]?' class="on"':'')+'>'+x[1]+'</a>'}).join('')+'<a class="opt" href="'+BLOG+'" target="_blank" rel="noopener">블로그</a><a class="opt" href="'+IG+'" target="_blank" rel="noopener">인스타그램</a></nav></header>'}
+function aTop(cur,solid){var m=[['about','회사소개'],['works','시공사례'],['contact','상담신청']];return '<header class="a-top wrap'+(solid?' solid':'')+'" id="atop"><a class="sm" href="#a">'+LOGO_L+'</a><nav>'+m.map(function(x){return '<a href="#a-'+x[0]+'"'+(cur===x[0]?' class="on"':'')+'>'+x[1]+'</a>'}).join('')+'<a class="opt" href="'+BLOG+'" target="_blank" rel="noopener">블로그</a><a class="opt" href="#a-insta"'+(cur==='insta'?' class="on"':'')+'>인스타그램</a></nav></header>'}
 function aTile(p){return '<a class="tile" href="#a-'+p.id+'" data-pop="'+p.id+'" data-v="a">'+im(p.cover,p.name)+'<span class="ov"><span class="lg">'+LOGO_L+'</span><span class="nm">'+esc(p.name)+'</span><span class="ln"></span><span class="py">'+p.py+' · '+esc(p.area)+'</span></span></a>'}
 function aFacts(){return '<div class="facts"><div><b>2006 —</b><span>마포 망원동에서 시작<br>(사업자등록 2006.05)</span></div><div><b>★ 4.9</b><span>오늘의집 계약자 리뷰 15건<br>(2026년 11월 기준)</span></div><div><b>52건</b><span>오늘의집 포트폴리오<br>(2026년 11월 기준)</span></div><div><b>서울 서북권</b><span>마포 · 은평 · 서대문<br>영등포 · 강서 아파트</span></div></div>'}
 function aReviews(){return '<section class="wrap sec"><div class="eyebrow">Reviews</div><h2 class="t">고객의 소리</h2><div class="rev"><div class="score"><b>4.9</b><span>오늘의집 계약자 리뷰 15건 · 2026년 11월 기준</span><div class="chips">'+CHIPS.map(function(c){return '<span>'+c+'</span>'}).join('')+'</div></div><div><blockquote>“'+REV_Q+'”</blockquote><cite>오늘의집 계약자 리뷰 중에서</cite></div></div></section>'}
 var V={};
 V.a={
- home:function(){var hs=['mw05','bl09','mi15','ds07','uj14'];
-  return '<section class="a-hero" data-slides>'+hs.map(function(k,i){return '<div class="sl'+(i?'':' cur')+'">'+im(k,'디자인SA 시공 현장',null,i<2)+'</div>'}).join('')+'<h1 class="a-word">'+LOGO_L+'</h1><div class="a-copy"><p>내 집이라는 마음으로, 실력으로 보답합니다.</p></div><div class="a-dots">'+hs.map(function(k,i){return '<button aria-label="'+(i+1)+'번째 사진"'+(i?'':' class="on"')+'></button>'}).join('')+'</div><div class="a-bar wrap"><a class="sm" href="#a">'+LOGO_L+'</a><nav><a href="#a-about">회사소개</a><a href="#a-works">시공사례</a><a href="#a-contact">상담신청</a><a href="'+BLOG+'" target="_blank" rel="noopener">블로그</a><a href="'+IG+'" target="_blank" rel="noopener">인스타그램</a></nav><a class="rt" href="#a-contact">상담 문의 <i></i></a></div></section>'+aTop('')+
+ home:function(){var hs=['mw05',['bl01','bl13','mi03'],'bl09','ds07',['ur05','sr14','uj06'],'mi15'];
+  return '<section class="a-hero" data-slides>'+hs.map(function(k,i){return '<div class="sl'+(i?'':' cur')+(typeof k==='string'?'':' trio')+'">'+(typeof k==='string'?im(k,'디자인SA 시공 현장',null,i<2):k.map(function(x){return im(x,'디자인SA 시공 현장',null,i<2)}).join(''))+'</div>'}).join('')+'<h1 class="a-word">'+LOGO_L+'</h1><div class="a-copy"><p>내 집이라는 마음으로, 실력으로 보답합니다.</p></div><div class="a-dots">'+hs.map(function(k,i){return '<button aria-label="'+(i+1)+'번째 사진"'+(i?'':' class="on"')+'></button>'}).join('')+'</div><div class="a-bar wrap"><a class="sm" href="#a">'+LOGO_L+'</a><nav><a href="#a-about">회사소개</a><a href="#a-works">시공사례</a><a href="#a-contact">상담신청</a><a href="'+BLOG+'" target="_blank" rel="noopener">블로그</a><a href="#a-insta">인스타그램</a></nav><a class="rt" href="#a-contact">상담 문의 <i></i></a></div></section>'+aTop('')+
   '<section class="wrap sec a-intro"><div class="eyebrow">DESIGN SA · INTERIOR STUDIO</div><q style="margin-top:22px">“꼭 필요한 곳에, 정확하게.”</q><p>2006년부터 서울 마포 망원동에서 아파트 인테리어를 해 왔습니다.<br>화려함보다 오래 살기 편한 구조와 마감을 먼저 생각합니다.</p></section>'+
   '<section class="wrap sec"><div class="a-head"><div><div class="eyebrow">Works</div><h2 class="t" style="margin-bottom:0">시공 사례</h2></div><a class="more" href="#a-works">ALL WORKS</a></div><div class="grid" style="margin-top:30px">'+ORDER.slice(0,6).map(function(id){return aTile(P[id])}).join('')+'</div></section>'+
   '<section class="wrap sec"><div class="eyebrow">Lighting</div><h2 class="t">조명 하나로 달라지는 집</h2><div class="lights">'+LIGHT.map(function(l){return lt(l,l[2])}).join('')+'</div><p class="strip-hint" style="margin-top:12px">사진에 마우스를 올리면(휴대폰은 꾹 누르면) 조명이 켜집니다. 전구 버튼으로 켠 채로 둘 수 있습니다.</p></section>'+
@@ -419,7 +450,7 @@ V.a={
 };
 
 /* ================= B : Practical Home ================= */
-function bTop(cur){var m=[['works','시공사례'],['process','진행 방법'],['about','회사소개'],['contact','상담신청']];return '<header class="b-top wrap"><a class="lg" href="#b">'+LOGO_D+'</a><nav>'+m.map(function(x){return '<a href="#b-'+x[0]+'"'+(cur===x[0]?' class="on"':'')+'>'+x[1]+'</a>'}).join('')+'</nav><a class="b-call" href="tel:01032520086">📞 '+PHONE+'</a></header>'}
+function bTop(cur){var m=[['works','시공사례'],['process','진행 방법'],['about','회사소개'],['insta','인스타그램'],['contact','상담신청']];return '<header class="b-top wrap"><a class="lg" href="#b">'+LOGO_D+'</a><nav>'+m.map(function(x){return '<a href="#b-'+x[0]+'"'+(cur===x[0]?' class="on"':'')+'>'+x[1]+'</a>'}).join('')+'</nav><a class="b-call" href="tel:01032520086">📞 '+PHONE+'</a></header>'}
 function bDock(){return '<div class="b-dock"><a href="tel:01032520086">전화</a><a href="sms:01032520086">문자</a><a class="pri" href="#b-contact">상담 신청</a></div>'}
 function band(n){return n<30?'20':n<40?'30':'40'}
 function bCard(p){return '<a class="b-card" href="#b-'+p.id+'" data-band="'+band(p.n)+'"><div class="ph">'+im(p.cover,p.name)+'</div><div class="tx"><h3>'+esc(p.name)+'</h3><p>'+esc(p.line)+'</p><div class="tags"><span>'+p.n+'평</span><span>'+esc(p.area)+'</span><span>아파트</span></div></div></a>'}
@@ -429,7 +460,7 @@ function bPrep(){return '<div class="b-box"><h3>상담 전에 준비하면 좋�
 function bRev(){return '<div class="b-box b-rev"><h3>오늘의집 계약자 리뷰</h3><div class="big">4.9 <span style="font-size:16px;font-weight:500;opacity:.6">/ 5 · 리뷰 15건</span></div><div class="chips">'+CHIPS.map(function(c){return '<span>'+c+'</span>'}).join('')+'</div><blockquote>“'+REV_Q+'”</blockquote><cite>2026년 11월 기준</cite></div>'}
 function bCta(){return '<section class="wrap"><div class="b-cta"><div><h2>우리 집 평형부터 알려 주세요.</h2><p style="opacity:.75;margin-top:6px">비슷한 평형 사례와 함께 상담해 드립니다.</p></div><div class="row"><a class="pri" href="#b-contact">상담 신청</a><a href="tel:01032520086">전화 '+PHONE+'</a></div></div></section>'}
 V.b={
- home:function(){var p=P.mw;return bTop('')+'<section class="wrap b-hero"><div><div class="eyebrow" style="letter-spacing:.12em">마포 · 은평 · 서대문 아파트 인테리어</div><h1 style="margin-top:14px">우리 집과 <em>같은 평형</em>부터<br>먼저 보세요.</h1><p class="sub">2006년부터 마포 망원동에서. 꼭 필요한 공사에 예산을 쓰고, 오래 쓰는 마감으로 정리합니다.</p><div class="b-py"><a href="#b-works-30"><b>30평대</b><span>'+ORDER.filter(function(i){return band(P[i].n)==='30'}).length+'곳 보기</span></a><a href="#b-works-40"><b>40평대</b><span>'+ORDER.filter(function(i){return band(P[i].n)==='40'}).length+'곳 보기</span></a><a href="#b-works"><b>전체</b><span>'+ORDER.length+'곳 보기</span></a></div><div class="b-quick"><a class="pri" href="#b-contact">무료 상담 신청</a><a href="'+IG+'" target="_blank" rel="noopener">인스타그램 보기 ↗</a></div></div><a class="b-ph" href="#b-mw">'+im('mw05','망원 동원데자뷰 거실',null,true)+'<span class="badge"><b>★ 4.9</b>오늘의집 리뷰 15건</span><span class="cap"><span><b>'+esc(p.name)+'</b><br><span style="opacity:.65">'+p.n+'평 · '+esc(p.area)+'</span></span><span>자세히 →</span></span></a></section>'+
+ home:function(){var p=P.mw;return bTop('')+'<section class="wrap b-hero"><div><div class="eyebrow" style="letter-spacing:.12em">마포 · 은평 · 서대문 아파트 인테리어</div><h1 style="margin-top:14px">우리 집과 <em>같은 평형</em>부터<br>먼저 보세요.</h1><p class="sub">2006년부터 마포 망원동에서. 꼭 필요한 공사에 예산을 쓰고, 오래 쓰는 마감으로 정리합니다.</p><div class="b-py"><a href="#b-works-30"><b>30평대</b><span>'+ORDER.filter(function(i){return band(P[i].n)==='30'}).length+'곳 보기</span></a><a href="#b-works-40"><b>40평대</b><span>'+ORDER.filter(function(i){return band(P[i].n)==='40'}).length+'곳 보기</span></a><a href="#b-works"><b>전체</b><span>'+ORDER.length+'곳 보기</span></a></div><div class="b-quick"><a class="pri" href="#b-contact">무료 상담 신청</a><a href="#b-insta">인스타그램 보기</a></div></div><a class="b-ph" href="#b-mw">'+im('mw05','망원 동원데자뷰 거실',null,true)+'<span class="badge"><b>★ 4.9</b>오늘의집 리뷰 15건</span><span class="cap"><span><b>'+esc(p.name)+'</b><br><span style="opacity:.65">'+p.n+'평 · '+esc(p.area)+'</span></span><span>자세히 →</span></span></a></section>'+
   '<section class="wrap"><div class="b-stats"><div><b>2006년~</b><span>사업자등록 · 마포 망원동</span></div><div><b>52건</b><span>오늘의집 포트폴리오 (2026.11)</span></div><div><b>★ 4.9</b><span>계약자 리뷰 15건 (2026.11)</span></div><div><b>A/S</b><span>리뷰 9건이 "AS 잘해줘요"</span></div></div></section>'+
   '<section class="wrap sec"><h2 class="t">평형별 시공 사례</h2><p class="lead">비슷한 평형의 집을 먼저 보시면 우리 집 공사 범위를 정하기 쉬워요.</p>'+bFilter()+'<div class="b-cards" data-list>'+ORDER.map(function(id){return bCard(P[id])}).join('')+'</div></section>'+
   '<section class="wrap sec"><h2 class="t">이렇게 진행합니다</h2><p class="lead">처음 인테리어를 하셔도 순서대로 따라오시면 됩니다.</p>'+bSteps()+'</section>'+
@@ -444,7 +475,7 @@ V.b={
 };
 
 /* ================= C : Room by Room ================= */
-function cTop(cur){return '<header class="c-top wrap"><a class="lg" href="#c">'+LOGO_D+'</a><nav><a href="#c-room-living"'+(cur==='room'?' class="on"':'')+'>공간별</a><a href="#c-works"'+(cur==='works'?' class="on"':'')+'>현장별</a><a class="opt" href="#c-about"'+(cur==='about'?' class="on"':'')+'>소개</a><a href="#c-contact"'+(cur==='contact'?' class="on"':'')+'>상담</a></nav></header>'}
+function cTop(cur){return '<header class="c-top wrap"><a class="lg" href="#c">'+LOGO_D+'</a><nav><a href="#c-room-living"'+(cur==='room'?' class="on"':'')+'>공간별</a><a href="#c-works"'+(cur==='works'?' class="on"':'')+'>현장별</a><a class="opt" href="#c-insta"'+(cur==='insta'?' class="on"':'')+'>인스타</a><a class="opt" href="#c-about"'+(cur==='about'?' class="on"':'')+'>소개</a><a href="#c-contact"'+(cur==='contact'?' class="on"':'')+'>상담</a></nav></header>'}
 function roomAll(r){var out=[];ORDER.forEach(function(id){P[id].all.forEach(function(k){if(RT[k]===r)out.push([k,id])})});return out}
 var RCOVER={living:'ds07',kitchen:'mw12',hall:'bl01',bath:'bl13',room:'mi15'};
 function cRows(){return '<div class="c-rows">'+ORDER.map(function(id,i){var p=P[id];return '<a class="c-row" href="#c-'+id+'"><span class="no">'+(i<9?'0':'')+(i+1)+'</span><b>'+esc(p.name)+'</b><span>'+p.n+'평</span><span class="ar">'+esc(p.area)+'</span><span class="ths">'+['living','kitchen','hall'].map(function(r){var k=pick(p,r,1)[0];return k?'<img src="img/'+k+'.jpg" alt="" loading="lazy">':''}).join('')+'</span></a>'}).join('')+'</div>'}
@@ -476,7 +507,7 @@ function render(){timers.forEach(clearInterval);timers=[];offs.forEach(function(
   else if(pg!=='home'&&pg!=='project'&&pg!=='room'&&M[pg])html=M[pg]();
   else if(P[pg])html=M.project(P[pg]);else html=M.home();
   html+='<a class="back" href="#home">← 시안 목록</a>'}
- app.innerHTML=html;wire(app);window.scrollTo(0,0)}
+ app.innerHTML=html;wire(app);wireZoom(app);lbClose();loadIG();window.scrollTo(0,0)}
 window.addEventListener('hashchange',render);
 var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 function wire(root){
@@ -492,6 +523,31 @@ function wire(root){
   var tp=root.querySelector('#atop');if(tp){var f=function(){tp.classList.toggle('show',window.scrollY>sl.offsetHeight-80)};window.addEventListener('scroll',f,{passive:true});offs.push(function(){window.removeEventListener('scroll',f)});f()}}
  var fl=root.querySelector('[data-filter]');if(fl){var list=root.querySelector('[data-list]');function ap(f){fl.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x.dataset.f===f)});list.querySelectorAll('.b-card').forEach(function(cd){cd.hidden=!(f==='all'||cd.dataset.band===f)})}fl.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){ap(b.dataset.f)})});ap((fl.querySelector('.on')||{}).dataset?fl.querySelector('.on').dataset.f:'all')}
 }
+
+/* ---- 현장 상세: 사진을 누르면 크게 보기, 좌우 화살표·밀어서 다음 사진, 사진을 누르면 닫힘 ---- */
+var lb=document.getElementById('lb'),lbImg=lb.querySelector('.lim'),lbList=[],lbI=0,lbLast=null;
+function lbShow(i){lbI=(i+lbList.length)%lbList.length;var k=lbList[lbI];lbImg.src='img/'+k+(HX[k]?'x':'')+'.jpg';lb.querySelector('.cnt').textContent=(lbI+1)+' / '+lbList.length}
+function lbOpen(list,i,from){lbList=list;lbLast=from;lbShow(i);lb.classList.add('open');document.documentElement.style.overflow='hidden';lb.querySelector('.nx').focus()}
+function lbClose(){lb.classList.remove('open');document.documentElement.style.overflow='';if(lbLast)try{lbLast.focus({preventScroll:true})}catch(_){}}
+lb.querySelector('.pv').addEventListener('click',function(e){e.stopPropagation();lbShow(lbI-1)});
+lb.querySelector('.nx').addEventListener('click',function(e){e.stopPropagation();lbShow(lbI+1)});
+lb.querySelector('.cl').addEventListener('click',lbClose);
+var lbX=null,lbY=0;
+lb.addEventListener('pointerdown',function(e){if(e.target.closest('button'))return;lbX=e.clientX;lbY=e.clientY});
+lb.addEventListener('pointerup',function(e){if(lbX===null)return;var dx=e.clientX-lbX,dy=e.clientY-lbY;lbX=null;if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy)){lbShow(lbI+(dx<0?1:-1));return}if(Math.abs(dx)<10&&Math.abs(dy)<10)lbClose()});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;if(e.key==='ArrowLeft')lbShow(lbI-1);else if(e.key==='ArrowRight')lbShow(lbI+1);else if(e.key==='Escape')lbClose()});
+function wireZoom(root){var ims=[].slice.call(root.querySelectorAll('.pj-hero img,.gal img,.b-main img,.c-sec .ims img'));if(!ims.length)return;
+ var keys=[];ims.forEach(function(im){var k=(im.getAttribute('src')||'').replace('img/','').replace('.jpg','');im.dataset.k=k;if(keys.indexOf(k)<0)keys.push(k)});
+ ims.forEach(function(im){im.classList.add('zoomable');im.tabIndex=0;im.setAttribute('role','button');
+  var go=function(){lbOpen(keys,keys.indexOf(im.dataset.k),im)};
+  im.addEventListener('click',go);im.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}})})}
+/* ---- 인스타그램 피드: 공식 게시물 퍼가기(embed)로 실제 게시물을 페이지 안에서 보여 줌 ---- */
+var IGP=['CrR7F1ZP7-_','CrFHds1vyIw','Cqo1kf0LwFy','CqCEfXlrlsP','Cp_fd9VPHxv','Cp1N6JIvGnh','Cmu_qcqPIn7','CmpqFIfv7Ub','CmKyCgtvs3v','CmIVzQUvbZh','CmF-GU3L99t','CkVI1RprxeE'];
+function instaBody(){return '<div class="ig-head"><div class="ig-id"><span class="ig-av">SA</span><div><b>design_sa_interior</b><small>인테리어 디자인 스튜디오 · 거실 · 주방 · 방 · 욕실 · 현관의 디자인</small></div></div><a class="btn ig-follow" href="'+IG+'" target="_blank" rel="noopener">인스타그램에서 팔로우 ↗</a></div><div class="ig-grid">'+IGP.map(function(c){return '<div class="ig-cell"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/'+c+'/" data-instgrm-version="14" style="margin:0;width:100%;min-width:0;max-width:100%;background:#fff;border:0"><a href="https://www.instagram.com/p/'+c+'/" target="_blank" rel="noopener">인스타그램 게시물 보기</a></blockquote></div>'}).join('')+'</div><p class="note ig-note">인스타그램 공식 게시물 퍼가기로 실제 게시물을 불러옵니다. 실제 사이트에서는 새 게시물이 올라오면 자동으로 이 목록에 반영되도록 연결합니다.</p>'}
+function loadIG(){if(!document.querySelector('.instagram-media'))return;if(window.instgrm){window.instgrm.Embeds.process();return}if(document.getElementById('igjs'))return;var s=document.createElement('script');s.id='igjs';s.async=true;s.src='https://www.instagram.com/embed.js';document.body.appendChild(s)}
+V.a.insta=function(){return aTop('insta',true)+'<section class="wrap sec" style="padding-top:60px"><div class="eyebrow">Instagram</div><h2 class="t">인스타그램</h2>'+instaBody()+'</section>'+foot(true)};
+V.b.insta=function(){return bTop('insta')+'<section class="wrap" style="padding-top:44px"><h2 class="t">인스타그램</h2><p class="lead">현장 사진과 디테일을 인스타그램에도 올리고 있어요.</p><div class="b-box" style="margin-top:24px">'+instaBody()+'</div></section>'+bCta()+foot()+bDock()};
+V.c.insta=function(){return cTop('insta')+'<section class="wrap" style="padding-top:44px"><h2 class="t">인스타그램</h2>'+instaBody()+'</section>'+cCta()+foot()};
 var pop=document.getElementById('pop');
 function openPop(v,p){var k=p.hero||p.cover;pop.querySelector('.im').src='img/'+k+(HX[k]?'x':'')+'.jpg';pop.querySelector('.im').alt=p.name;pop.querySelector('b').textContent=p.name+' · '+p.py;pop.querySelector('small').textContent=p.area+' · '+p.line;pop.querySelector('.gol').href='#'+v+'-'+p.id;pop.classList.add('open');pop.querySelector('.x').focus()}
 function closePop(){pop.classList.remove('open')}
