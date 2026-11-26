@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>디자인SA · 홈페이지 시안</title>
+<meta property="og:title" content="디자인SA 홈페이지 시안">
+<meta property="og:description" content="DNA LABS가 준비한 디자인SA 홈페이지 시안 A·B·C">
+<meta property="og:image" content="img/mw05.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Serif+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;word-break:keep-all;line-height:1.7;-webkit-font-smoothing:antialiased;color:#1f2420;background:#fff}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.wrap{padding-left:clamp(16px,4vw,64px);padding-right:clamp(16px,4vw,64px)}
+.sec{padding-top:clamp(64px,9vw,140px)}
+.eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase;opacity:.6}
+.blank{background:rgba(200,160,60,.2);padding:0 4px;border-radius:2px}
+.back{position:fixed;left:14px;bottom:14px;z-index:90;background:#111;color:#fff;font-size:12px;padding:11px 14px;border-radius:30px;opacity:.82}
+.back:hover{opacity:1}
+@media(max-width:700px){.vb .back{bottom:76px}}
+.va .back{bottom:90px}
+@media(max-width:700px){.c-hero .sub p[style]{text-align:left!important}}
+
+/* ---------- landing ---------- */
+.land{min-height:100svh;background:#0f1f19;color:#ece6dc;padding:clamp(28px,5vw,72px)}
+.land .lg img{width:min(320px,70vw)}
+.land h1{font-weight:300;font-size:clamp(30px,4.4vw,60px);line-height:1.2;margin:34px 0 12px;letter-spacing:-.01em}
+.land .sub{max-width:720px;opacity:.75}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px;margin-top:44px}
+.card{background:#f4f0e9;color:#1f2420;display:flex;flex-direction:column;transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,.35)}
+.card .ph{aspect-ratio:4/3;overflow:hidden;position:relative}
+.card .ph img{width:100%;height:100%;object-fit:cover}
+.card .ph b{position:absolute;left:14px;top:12px;font-size:13px;font-weight:600;background:#fff;padding:7px 11px;letter-spacing:.1em}
+.card .tx{padding:20px 22px 24px}
+.card h2{font-size:22px;font-weight:600;line-height:1.3}
+.card h2 small{display:block;font-size:12px;letter-spacing:.2em;font-weight:500;opacity:.55;margin-bottom:6px}
+.card p{font-size:14px;opacity:.75;margin-top:8px}
+.card .go{margin-top:16px;font-size:13px;letter-spacing:.1em;font-weight:600}
+.howto{margin-top:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px 28px;font-size:14px;opacity:.8}
+.howto div{border-top:1px solid rgba(236,230,220,.25);padding-top:12px}
+.land .lfoot{margin-top:56px;font-size:12px;opacity:.5}
+
+/* ---------- shared bits ---------- */
+.lt{position:relative;overflow:hidden;touch-action:pan-y;-webkit-touch-callout:none;user-select:none;-webkit-user-select:none;background:#222}
+.lt img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.lt .on-img{opacity:0;transition:opacity .9s ease}
+.lt.on .on-img,.lt.pin .on-img{opacity:1}
+.bulb{position:absolute;right:12px;bottom:12px;width:44px;height:44px;border-radius:50%;background:rgba(20,18,16,.55);color:#fff;display:grid;place-items:center;backdrop-filter:blur(6px);transition:background .4s,color .4s;z-index:2}
+.bulb svg{width:20px;height:20px}
+.lt.pin .bulb{background:#f6e7bf;color:#2a2318}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+.tile{position:relative;display:block;aspect-ratio:1/1;overflow:hidden;background:#d8d2ca}
+.tile>img{width:100%;height:100%;object-fit:cover;transition:transform 1.6s cubic-bezier(.2,.7,.2,1)}
+.tile:hover>img,.tile:focus-visible>img{transform:scale(1.05)}
+.ov{position:absolute;inset:0;background:rgba(15,31,25,.55);opacity:0;transition:opacity .8s ease;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#fff;text-align:center;padding:20px}
+.ov>*{transform:translateY(10px);opacity:0;transition:transform .9s cubic-bezier(.2,.7,.2,1),opacity .9s ease}
+.ov .lg img{width:120px}
+.ov .nm{font-family:'Noto Serif KR',serif;font-size:clamp(17px,1.5vw,22px);font-weight:400}
+.ov .py{font-size:12px;letter-spacing:.22em}
+.ov .lg{transition-delay:.05s}.ov .nm{transition-delay:.15s}.ov .py{transition-delay:.3s}
+.ov .ln{width:0;height:1px;background:#fff;transform:none;opacity:1;transition:width .9s ease .25s}
+.tile:hover .ov,.tile:focus-visible .ov{opacity:1}
+.tile:hover .ov>*,.tile:focus-visible .ov>*{transform:none;opacity:1}
+.tile:hover .ov .ln,.tile:focus-visible .ov .ln{width:120px}
+@media(hover:none){.ov{opacity:1;background:linear-gradient(transparent 55%,rgba(15,31,25,.7));justify-content:flex-end;align-items:flex-start;text-align:left;gap:4px}.ov>*{opacity:1;transform:none}.ov .lg,.ov .ln{display:none}}
+.pop{position:fixed;inset:0;z-index:95;background:rgba(10,14,12,.9);display:none;align-items:center;justify-content:center;padding:clamp(12px,4vw,48px)}
+.pop.open{display:flex}
+.pop .in{max-width:min(1400px,100%);width:100%;display:flex;flex-direction:column;gap:14px;color:#fff}
+.pop .im{max-height:76vh;width:100%;object-fit:contain}
+.pop .row{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.pop .row b{font-family:'Noto Serif KR',serif;font-weight:400;font-size:20px}
+.pop .row small{display:block;opacity:.7;font-size:13px}
+.pop .gol{border:1px solid rgba(255,255,255,.6);padding:12px 20px;font-size:13px;letter-spacing:.1em}
+.pop .x{position:absolute;right:14px;top:10px;width:48px;height:48px;font-size:30px;color:#fff}
+.strip{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;padding-bottom:10px}
+.strip>*{flex:0 0 auto;scroll-snap-align:start;height:clamp(220px,30vw,420px)}
+.strip img{height:100%;width:auto;object-fit:cover}
+.strip-hint{font-size:12px;letter-spacing:.12em;opacity:.55;margin:0 0 12px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr)}
+.steps div{border-top:1px solid rgba(128,128,128,.35);padding:22px 22px 0 0}
+.steps b{display:block;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:34px;line-height:1;opacity:.5}
+.steps h3{font-weight:600;font-size:17px;margin:14px 0 6px}
+.steps p{font-size:14px;opacity:.72}
+@media(max-width:800px){.steps{grid-template-columns:repeat(2,1fr);gap:20px 0}}
+.cform{display:grid;grid-template-columns:1fr 1fr;gap:16px 20px;max-width:880px}
+.cform label{display:flex;flex-direction:column;gap:6px;font-size:13px}
+.cform .full{grid-column:1/-1}
+.cform input,.cform select,.cform textarea{font:inherit;font-size:16px;padding:12px 14px;border:1px solid rgba(128,128,128,.45);background:transparent;color:inherit;border-radius:0;min-height:46px}
+.cform textarea{min-height:120px;resize:vertical}
+.cform .agree{flex-direction:row;align-items:center;gap:10px}
+.cform .agree input{min-height:auto;width:20px;height:20px}
+.cform button{grid-column:1/-1;justify-self:start}
+@media(max-width:600px){.cform{grid-template-columns:1fr}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid currentColor;padding:13px 22px;font-size:14px;letter-spacing:.06em;min-height:46px}
+.msg{max-width:420px;margin-top:36px;display:none}
+.msg.show{display:block}
+.msg .t{font-size:12px;opacity:.65;margin-bottom:10px}
+.msg .phone{background:#e9edf0;border-radius:18px;padding:18px;color:#1c2229}
+.msg .who{display:flex;gap:10px;align-items:center;font-size:13px;margin-bottom:10px}
+.msg .who i{width:34px;height:34px;border-radius:10px;background:#0f1f19;display:grid;place-items:center;font-style:normal;color:#ece6dc;font-family:'Cormorant Garamond',serif;font-size:17px}
+.msg .bub{background:#fff;border-radius:4px 14px 14px 14px;padding:14px 16px;font-size:14px;line-height:1.65;white-space:pre-line}
+.explain{max-width:880px;font-size:13px;opacity:.7;margin-top:22px;line-height:1.8}
+.foot{padding-top:70px;padding-bottom:100px;font-size:13px;line-height:1.9}
+.foot .flogo{width:170px;margin-bottom:18px}
+.foot .biz span{display:inline-block;margin-right:16px}
+.foot .ext a{margin-right:16px;text-decoration:underline;text-underline-offset:3px}
+.gal{columns:2;column-gap:10px}
+.gal img{width:100%;margin-bottom:10px;break-inside:avoid}
+@media(max-width:600px){.gal{columns:1}}
+.pager{display:flex;justify-content:space-between;gap:20px;padding:56px 0;border-top:1px solid rgba(128,128,128,.25);margin-top:80px;font-size:15px}
+.pager a{display:flex;flex-direction:column}
+.pager small{opacity:.55;font-size:11px;letter-spacing:.18em}
+.pager a:last-child{text-align:right}
+
+/* =================== A : Signature =================== */
+.va{background:#f7f5f1;color:#1d1f1c}
+.a-hero{position:relative;height:100svh;min-height:560px;overflow:hidden;background:#1e1c1a;color:#fff}
+.a-hero .sl{position:absolute;inset:0;opacity:0;transition:opacity 1.6s ease}
+.a-hero .sl.cur{opacity:1}
+.a-hero .sl img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 7s linear}
+.a-hero .sl.cur img{transform:scale(1)}
+.a-hero:before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(rgba(0,0,0,.42),rgba(0,0,0,.05) 38%,rgba(0,0,0,0) 60%,rgba(0,0,0,.25));pointer-events:none}
+.a-word{position:absolute;z-index:2;left:50%;top:clamp(56px,9vh,110px);transform:translateX(-50%);width:min(64vw,980px);filter:drop-shadow(0 4px 24px rgba(0,0,0,.25))}
+.a-word img{width:100%}
+.a-copy{position:absolute;z-index:2;left:50%;transform:translateX(-50%);bottom:calc(76px + 6vh);text-align:center;width:90%}
+.a-copy p{font-family:'Noto Serif KR',serif;font-weight:300;font-size:clamp(15px,1.4vw,20px);letter-spacing:.04em;text-shadow:0 1px 12px rgba(0,0,0,.35)}
+.a-bar{position:absolute;z-index:3;left:0;right:0;bottom:0;height:76px;background:#24211f;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.a-bar .sm img{height:34px;width:auto}
+.a-bar nav{display:flex;gap:clamp(18px,3vw,48px);font-size:14px;font-weight:500;letter-spacing:.02em}
+.a-bar nav a{opacity:.85;padding:10px 0}.a-bar nav a:hover{opacity:1}
+.a-bar .rt{display:flex;align-items:center;gap:14px;font-size:13px}
+.a-bar .rt i{display:inline-block;width:26px;height:9px;border-top:1px solid #fff;border-bottom:1px solid #fff}
+.a-dots{position:absolute;z-index:3;right:clamp(16px,4vw,64px);bottom:96px;display:flex;gap:8px}
+.a-dots button{width:30px;height:24px;position:relative}
+.a-dots button:after{content:'';position:absolute;left:0;right:0;top:50%;height:2px;background:rgba(255,255,255,.4)}
+.a-dots button.on:after{background:#fff}
+.a-top{position:fixed;z-index:50;top:0;left:0;right:0;height:64px;background:rgba(36,33,31,.96);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:16px;transform:translateY(-100%);transition:transform .5s ease}
+.a-top.show{transform:none}
+.a-top.solid{position:sticky;transform:none}
+.a-top .sm img{height:28px;width:auto}
+.a-top nav{display:flex;gap:clamp(14px,2.6vw,40px);font-size:14px}
+.a-top nav a{opacity:.8;padding:10px 0}.a-top nav a.on,.a-top nav a:hover{opacity:1}
+@media(max-width:760px){.a-bar nav,.a-top nav .opt{display:none}.a-top nav{gap:14px;font-size:13px}.a-word{width:84vw}}
+.va h2.t{font-family:'Noto Serif KR',serif;font-weight:400;font-size:clamp(24px,2.8vw,40px);line-height:1.35;margin:10px 0 30px}
+.a-intro{text-align:center}
+.a-intro q{display:block;font-family:'Noto Serif KR',serif;font-weight:300;font-size:clamp(24px,3.2vw,46px);line-height:1.45;quotes:none}
+.a-intro p{max-width:640px;margin:22px auto 0;opacity:.7}
+.a-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.a-head .more{font-size:13px;letter-spacing:.16em;border-bottom:1px solid;padding-bottom:3px}
+.lights{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.lights .lt{aspect-ratio:3/2}
+@media(max-width:900px){.lights{grid-template-columns:1fr}}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(0,0,0,.18)}
+.facts div{padding:22px 16px 0 0}
+.facts b{display:block;font-family:'Noto Serif KR',serif;font-weight:400;font-size:clamp(22px,2.2vw,32px)}
+.facts span{font-size:12px;opacity:.62;letter-spacing:.04em}
+@media(max-width:700px){.facts{grid-template-columns:repeat(2,1fr);gap:16px 0}}
+.a-about{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,5vw,90px);align-items:center}
+.a-about img{width:100%;aspect-ratio:4/5;object-fit:cover}
+@media(max-width:800px){.a-about{grid-template-columns:1fr}}
+.rev{display:grid;grid-template-columns:280px 1fr;gap:clamp(24px,5vw,80px);align-items:start}
+.rev .score b{font-family:'Cormorant Garamond',serif;font-size:84px;font-weight:300;line-height:1}
+.rev .score span{display:block;font-size:13px;opacity:.65}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chips span{border:1px solid rgba(0,0,0,.2);border-radius:30px;padding:7px 14px;font-size:13px}
+.rev blockquote{font-family:'Noto Serif KR',serif;font-weight:300;font-size:clamp(17px,1.6vw,22px);line-height:1.8}
+.rev cite{display:block;margin-top:14px;font-style:normal;font-size:13px;opacity:.6}
+@media(max-width:800px){.rev{grid-template-columns:1fr}}
+.a-cta{margin-top:clamp(80px,10vw,150px);position:relative;color:#fff;text-align:center;padding:clamp(80px,12vw,180px) 20px;overflow:hidden}
+.a-cta img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.a-cta:before{content:'';position:absolute;inset:0;background:rgba(15,31,25,.55);z-index:1}
+.a-cta>div{position:relative;z-index:2}
+.a-cta h2{font-family:'Noto Serif KR',serif;font-weight:300;font-size:clamp(24px,3vw,42px)}
+.a-cta .btn{margin-top:26px}
+.va .foot{background:#24211f;color:#d9d3c8;margin-top:0}
+.pj-hero{position:relative;height:min(88vh,64vw);min-height:340px;overflow:hidden}
+.pj-hero img{width:100%;height:100%;object-fit:cover}
+.pj-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;padding-top:48px}
+.pj-head h1{font-family:'Noto Serif KR',serif;font-weight:400;font-size:clamp(26px,3.4vw,46px);line-height:1.25}
+.pj-meta{display:grid;grid-template-columns:repeat(4,auto);gap:6px 28px;font-size:14px;margin-top:18px}
+.pj-meta dt{opacity:.55;font-size:11px;letter-spacing:.16em}
+@media(max-width:600px){.pj-meta{grid-template-columns:repeat(2,auto)}}
+
+/* =================== B : Practical Home =================== */
+.vb{background:#f4f1ec;color:#1b2a24}
+.b-top{position:sticky;top:0;z-index:50;background:rgba(244,241,236,.94);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:space-between;gap:14px;height:70px;border-bottom:1px solid rgba(27,42,36,.08)}
+.b-top .lg img{height:30px;width:auto}
+.b-top nav{display:flex;gap:clamp(14px,2.4vw,34px);font-size:15px;font-weight:500}
+.b-top nav a{padding:10px 0;opacity:.75}.b-top nav a.on,.b-top nav a:hover{opacity:1}
+.b-call{background:#133126;color:#fff;border-radius:40px;padding:11px 18px;font-size:14px;font-weight:600;white-space:nowrap}
+@media(max-width:760px){.b-top nav{display:none}}
+.b-hero{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(24px,4vw,64px);align-items:center;padding-top:clamp(28px,5vw,70px)}
+.b-hero h1{font-size:clamp(32px,4.4vw,64px);font-weight:700;line-height:1.18;letter-spacing:-.025em}
+.b-hero h1 em{font-style:normal;color:#2f6b52}
+.b-hero .sub{margin-top:18px;font-size:clamp(15px,1.3vw,18px);opacity:.75;max-width:520px}
+.b-py{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.b-py a{background:#fff;border:1px solid rgba(27,42,36,.14);border-radius:14px;padding:14px 18px;min-width:120px}
+.b-py a b{display:block;font-size:19px}
+.b-py a span{font-size:13px;opacity:.6}
+.b-py a:hover{border-color:#133126}
+.b-quick{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.b-quick a{border-radius:40px;padding:12px 20px;font-size:14px;font-weight:600;border:1px solid #133126}
+.b-quick a.pri{background:#133126;color:#fff}
+.b-ph{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/3.2}
+.b-ph>img{width:100%;height:100%;object-fit:cover}
+.b-ph .badge{position:absolute;left:16px;top:16px;background:#fff;border-radius:14px;padding:12px 16px;font-size:13px;box-shadow:0 10px 30px rgba(0,0,0,.12)}
+.b-ph .badge b{font-size:22px;margin-right:4px}
+.b-ph .cap{position:absolute;left:16px;right:16px;bottom:16px;background:rgba(255,255,255,.94);border-radius:14px;padding:14px 18px;display:flex;justify-content:space-between;gap:10px;font-size:14px;align-items:center}
+.b-ph .cap b{font-size:16px}
+@media(max-width:860px){.b-hero{grid-template-columns:1fr}.b-ph{order:-1}}
+.b-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:clamp(36px,5vw,70px)}
+.b-stats div{background:#fff;border-radius:18px;padding:22px 22px 20px}
+.b-stats b{display:block;font-size:clamp(24px,2.6vw,36px);font-weight:700;letter-spacing:-.02em;color:#133126}
+.b-stats span{font-size:13px;opacity:.65}
+@media(max-width:760px){.b-stats{grid-template-columns:repeat(2,1fr)}}
+.vb h2.t{font-size:clamp(24px,2.8vw,38px);font-weight:700;letter-spacing:-.02em;line-height:1.3}
+.vb .lead{opacity:.7;margin-top:8px}
+.b-filter{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 22px}
+.b-filter button{border:1px solid rgba(27,42,36,.2);border-radius:30px;padding:9px 18px;font-size:14px;min-height:42px;background:#fff}
+.b-filter button.on{background:#133126;color:#fff;border-color:#133126}
+.b-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:960px){.b-cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.b-cards{grid-template-columns:1fr}}
+.b-card{background:#fff;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform .4s,box-shadow .4s}
+.b-card[hidden]{display:none}
+.b-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(19,49,38,.12)}
+.b-card .ph{aspect-ratio:4/3;overflow:hidden}
+.b-card .ph img{width:100%;height:100%;object-fit:cover}
+.b-card .tx{padding:18px 20px 20px}
+.b-card h3{font-size:18px;font-weight:700}
+.b-card p{font-size:14px;opacity:.68;margin-top:4px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.tags span{background:#eef1ec;color:#244b3b;border-radius:8px;padding:4px 10px;font-size:12px;font-weight:600}
+.b-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px;counter-reset:s}
+.b-steps div{background:#fff;border-radius:18px;padding:24px}
+.b-steps b{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#133126;color:#fff;font-size:14px}
+.b-steps h3{font-size:18px;margin:14px 0 6px}
+.b-steps p{font-size:14px;opacity:.7}
+@media(max-width:860px){.b-steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.b-steps{grid-template-columns:1fr}}
+.b-two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:860px){.b-two{grid-template-columns:1fr}}
+.b-box{background:#fff;border-radius:22px;padding:clamp(24px,3vw,40px)}
+.b-box h3{font-size:22px;font-weight:700;margin-bottom:16px}
+.b-check li{list-style:none;padding:12px 0 12px 34px;border-top:1px solid rgba(27,42,36,.08);position:relative;font-size:15px}
+.b-check li:before{content:'';position:absolute;left:4px;top:15px;width:18px;height:18px;border-radius:5px;border:1.5px solid #2f6b52}
+.b-check li small{display:block;opacity:.6;font-size:13px}
+.b-rev .big{font-size:56px;font-weight:700;color:#133126;line-height:1}
+.b-rev .chips span{border-color:rgba(27,42,36,.18);background:#f4f1ec}
+.b-rev blockquote{margin-top:22px;font-size:16px;line-height:1.8;border-left:3px solid #2f6b52;padding-left:16px}
+.b-rev cite{display:block;margin-top:8px;font-size:13px;opacity:.6;font-style:normal}
+.b-cta{margin-top:clamp(70px,9vw,130px);background:#133126;color:#fff;border-radius:26px;padding:clamp(34px,5vw,70px);display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.b-cta h2{font-size:clamp(24px,2.8vw,38px);font-weight:700;letter-spacing:-.02em}
+.b-cta .row{display:flex;gap:10px;flex-wrap:wrap}
+.b-cta a{border-radius:40px;padding:14px 24px;font-weight:600;border:1px solid rgba(255,255,255,.5)}
+.b-cta a.pri{background:#fff;color:#133126;border-color:#fff}
+.b-dock{display:none}
+@media(max-width:700px){.b-dock{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;padding:10px 12px calc(10px + env(safe-area-inset-bottom));box-shadow:0 -6px 20px rgba(0,0,0,.08)}.b-dock a{text-align:center;border-radius:12px;padding:12px 6px;font-size:14px;font-weight:600;border:1px solid #133126}.b-dock a.pri{background:#133126;color:#fff}}
+.vb .foot{color:#41514a}
+.b-pj-head{padding-top:clamp(30px,4vw,56px)}
+.b-pj-head .crumb{font-size:13px;opacity:.6}
+.b-pj-head h1{font-size:clamp(28px,3.6vw,48px);font-weight:700;letter-spacing:-.02em;line-height:1.25;margin-top:6px}
+.b-info{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-radius:18px;margin-top:22px;overflow:hidden}
+.b-info div{padding:16px 20px;border-right:1px solid rgba(27,42,36,.08)}
+.b-info dt{font-size:12px;opacity:.55}
+.b-info dd{font-size:16px;font-weight:600}
+@media(max-width:700px){.b-info{grid-template-columns:repeat(2,1fr)}}
+.vb .gal img{border-radius:14px}
+.b-main{border-radius:22px;overflow:hidden;margin-top:22px}
+.b-main img{width:100%;max-height:82vh;object-fit:cover}
+
+/* =================== C : Room by Room =================== */
+.vc{background:#fff;color:#111}
+.c-top{position:sticky;top:0;z-index:50;background:#fff;display:flex;align-items:center;justify-content:space-between;gap:16px;height:66px;border-bottom:1px solid #111}
+.c-top .lg img{height:26px;width:auto}
+.c-top nav{display:flex;gap:clamp(12px,2.2vw,30px);font-size:14px;font-weight:600}
+.c-top nav a{padding:10px 0;opacity:.55}.c-top nav a.on,.c-top nav a:hover{opacity:1}
+@media(max-width:600px){.c-top nav .opt{display:none}.c-top nav{gap:12px;font-size:13px}}
+.c-hero{padding-top:clamp(36px,6vw,90px)}
+.c-hero h1{font-size:clamp(36px,6.4vw,104px);font-weight:800;line-height:1.02;letter-spacing:-.045em}
+.c-hero h1 span{color:#2f6b52}
+.c-hero .sub{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:22px;font-size:15px}
+.c-hero .sub p{max-width:560px;opacity:.7}
+.c-rooms{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:repeat(2,clamp(180px,22vw,340px));gap:8px;margin-top:clamp(28px,4vw,50px)}
+.c-room{position:relative;overflow:hidden;background:#ddd;color:#fff}
+.c-room:first-child{grid-row:span 2}
+.c-room img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.c-room:hover img{transform:scale(1.05)}
+.c-room:after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(0,0,0,.55))}
+.c-room .lb{position:absolute;z-index:2;left:18px;right:18px;bottom:14px;display:flex;justify-content:space-between;align-items:flex-end}
+.c-room .lb b{font-size:clamp(22px,2.4vw,36px);font-weight:800;letter-spacing:-.03em}
+.c-room .lb span{font-size:13px;font-weight:600}
+@media(max-width:760px){.c-rooms{grid-template-columns:1fr 1fr;grid-template-rows:none;grid-auto-rows:200px}.c-room:first-child{grid-column:span 2;grid-row:auto}}
+.vc h2.t{font-size:clamp(26px,3.4vw,52px);font-weight:800;letter-spacing:-.04em;line-height:1.1}
+.c-rows{margin-top:26px;border-top:2px solid #111}
+.c-row{display:grid;grid-template-columns:60px 1.6fr 90px 1fr 1.3fr;gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid #ddd;font-size:15px}
+.c-row .no{font-weight:800;opacity:.3;font-size:20px}
+.c-row b{font-size:19px;font-weight:700}
+.c-row .ths{display:flex;gap:4px;justify-content:flex-end}
+.c-row .ths img{width:64px;height:48px;object-fit:cover}
+.c-row:hover{background:#f3f5f2}
+@media(max-width:760px){.c-row{grid-template-columns:40px 1fr auto}.c-row .ar,.c-row .ths{display:none}}
+.c-cmp{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:22px}
+.c-cmp a{display:block}
+.c-cmp img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.c-cmp span{display:block;font-size:13px;font-weight:600;margin-top:6px}
+@media(max-width:700px){.c-cmp{grid-template-columns:repeat(2,1fr)}}
+.c-tabs{display:flex;gap:0;flex-wrap:wrap;margin-top:22px;border:1px solid #111;width:max-content;max-width:100%}
+.c-tabs a{padding:10px 18px;font-size:14px;font-weight:700;border-right:1px solid #111}
+.c-tabs a:last-child{border-right:0}
+.c-tabs a.on{background:#111;color:#fff}
+.c-mas{columns:4;column-gap:8px;margin-top:26px}
+.c-mas a{display:block;margin-bottom:8px;break-inside:avoid;position:relative}
+.c-mas a span{position:absolute;left:0;bottom:0;background:#111;color:#fff;font-size:12px;font-weight:600;padding:4px 8px;opacity:0;transition:opacity .3s}
+.c-mas a:hover span{opacity:1}
+@media(max-width:1100px){.c-mas{columns:3}}@media(max-width:700px){.c-mas{columns:2}}
+@media(hover:none){.c-mas a span{opacity:.9}}
+.c-num{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid #111;margin-top:26px}
+.c-num div{padding:18px 14px 0 0}
+.c-num b{display:block;font-size:clamp(30px,3.6vw,56px);font-weight:800;letter-spacing:-.04em;line-height:1.05}
+.c-num span{font-size:13px;opacity:.6}
+@media(max-width:700px){.c-num{grid-template-columns:repeat(2,1fr);gap:16px 0}}
+.c-cta{margin-top:clamp(70px,9vw,130px);background:#111;color:#fff;padding:clamp(36px,6vw,90px) clamp(16px,4vw,64px);display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.c-cta h2{font-size:clamp(28px,4vw,60px);font-weight:800;letter-spacing:-.04em;line-height:1.08}
+.c-cta .btn{background:#fff;color:#111;border-color:#fff;font-weight:700}
+.vc .foot{border-top:1px solid #111}
+.c-pj h1{font-size:clamp(32px,5vw,76px);font-weight:800;letter-spacing:-.045em;line-height:1.05;padding-top:clamp(30px,4vw,60px)}
+.c-pj .meta{display:flex;gap:10px 26px;flex-wrap:wrap;margin-top:14px;font-size:15px;font-weight:600}
+.c-pj .meta span{opacity:.5;font-weight:500;margin-right:6px}
+.c-sec{display:grid;grid-template-columns:180px 1fr;gap:20px;padding:26px 0;border-top:1px solid #111;margin-top:26px}
+.c-sec h3{font-size:22px;font-weight:800}
+.c-sec h3 small{display:block;font-size:13px;opacity:.5;font-weight:600}
+.c-sec .ims{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:8px}
+.c-sec .ims img{width:100%;aspect-ratio:var(--r);object-fit:cover}
+@media(max-width:700px){.c-sec{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="pop" id="pop" role="dialog" aria-modal="true" aria-label="현장 사진 크게 보기"><button class="x" aria-label="닫기">×</button><div class="in"><img class="im" alt=""><div class="row"><div><b></b><small></small></div><a class="gol" href="#">현장 자세히 보기 →</a></div></div></div>
+<script>
+var DIM={"ur10":[1333,2000],"sr16":[1332,2000],"ds12":[2000,1333],"ds14":[2000,1333],"sr04":[1332,2000],"uj04":[1333,2000],"dm05":[1333,2000],"mi13":[2000,1333],"bl07":[2000,1332],"mw01":[2000,1334],"mw16":[2000,1334],"dm11":[2000,1333],"ur11":[2000,1333],"sr08":[2000,1332],"sr03":[1332,2000],"uj08":[2000,1333],"sr11":[1332,2000],"bl04":[1332,2000],"uj13":[2000,1333],"uj10":[2000,1333],"mi12":[2000,1333],"dm13":[1333,2000],"uj05":[1333,2000],"mi15":[2000,1333],"ur15":[2000,1333],"uj16":[2000,1333],"mw02":[2000,1334],"mi14":[2000,1333],"sr10":[2000,1332],"mw15":[2000,1334],"sr13":[1332,2000],"uj03":[1333,2000],"bl03":[1332,2000],"ds09":[2000,1333],"ur07":[2000,1333],"sr01":[2000,1332],"ds02":[1333,2000],"sr02":[1332,2000],"mw12":[2000,1334],"mw03":[2000,1334],"mi04":[1333,2000],"sr15":[1332,2000],"sr09":[2000,1332],"bl09":[2000,1332],"bl11":[1332,2000],"sr12":[2000,1332],"dm09":[2000,1333],"mi07":[2000,1333],"ur05":[1333,2000],"mw11":[2000,1334],"bl10":[2000,1332],"dm02":[1333,2000],"ur03":[1333,2000],"mw09":[2000,1333],"uj06":[1333,2000],"sr14":[1332,2000],"ds01":[2000,1333],"ur16":[2000,1333],"mi01":[2000,1333],"ds03":[1333,2000],"mw10":[2000,1333],"uj02":[1333,2000],"bl01":[1332,2000],"ds04":[1333,2000],"mw07":[2000,1333],"uj01":[2000,1333],"dm04":[1333,2000],"bl02":[1332,2000],"mi10":[2000,1333],"mi16":[2000,1333],"dm12":[2000,1333],"bl12":[2000,1332],"mw08":[2000,1333],"dm10":[2000,1333],"mw04":[1334,2000],"ds16":[2000,1333],"ds05":[1333,2000],"bl06":[2000,1332],"mw14":[2000,1334],"mi11":[2000,1333],"ur02":[1333,2000],"bl08":[2000,1332],"ur04":[1333,2000],"sr06":[2000,1332],"mw05":[2000,1333],"bl05":[2000,1332],"bl14":[1332,2000],"mw13":[2000,1334],"dm07":[2000,1333],"ds15":[2000,1333],"ur06":[1333,2000],"ds13":[2000,1333],"ur09":[1333,2000],"mi02":[2000,1333],"uj07":[1333,2000],"ds11":[2000,1333],"ur14":[2000,1333],"ur13":[2000,1333],"bl15":[1332,2000],"mi03":[1333,2000],"uj15":[2000,1333],"uj11":[2000,1333],"ur08":[2000,1333],"ur01":[2000,1333],"mi08":[2000,1333],"ur12":[2000,1333],"uj09":[2000,1333],"ds06":[2000,1333],"ds08":[2000,1333],"ds10":[2000,1333],"mw06":[2000,1333],"bl16":[1332,2000],"bl13":[1332,2000],"dm16":[2000,1333],"dm01":[2000,1333],"uj14":[2000,1333],"sr05":[1332,2000],"dm15":[2000,1333],"ds07":[2000,1333],"dm06":[2000,1333],"mi09":[2000,1333],"uj12":[2000,1333],"dm08":[2000,1333],"sr07":[2000,1332],"dm03":[1333,2000]};
+var HX={ds07:1,bl10:1,mw05:1,mw06:1,mi01:1,mi02:1,uj09:1,uj08:1,ds06:1,dm06:1,sr08:1};
+var OH='https://ohou.se/experts/myhome/11826752',BLOG='https://blog.naver.com/design_sa_',PHONE='010-3252-0086',TEL='02-335-0086';
+function rng(p,a,b,skip){var r=[];for(var i=a;i<=b;i++){var k=p+(i<10?'0':'')+i;if(!skip||skip.indexOf(i)<0)r.push(k)}return r}
+var P={
+ mw:{id:'mw',name:'망원 동원데자뷰',py:'40PY',n:40,area:'서울 마포 망원',cover:'mw05',hero:'mw05',line:'우드 톤 바닥과 화이트 주방으로 밝게 정리한 40평',oh:'139913',all:rng('mw',1,16)},
+ ds:{id:'ds',name:'당산 동부센트레빌',py:'35PY',n:35,area:'서울 영등포 당산',cover:'ds07',hero:'ds07',line:'화이트와 우드로 완성한 고급스러운 리모델링',oh:'183981',all:rng('ds',1,16)},
+ mi:{id:'mi',name:'불광 미성아파트',py:'44PY',n:44,area:'서울 은평 불광',cover:'mi01',hero:'mi01',line:'화이트와 우드 디테일로 완성한 미니멀한 디자인',oh:'210067',all:rng('mi',1,16,[5,6])},
+ bl:{id:'bl',name:'불광 롯데캐슬',py:'33PY',n:33,area:'서울 은평 불광',cover:'bl10',hero:'bl10',line:'웜톤으로 완성한 미니멀 아파트 인테리어',oh:'149633',all:rng('bl',1,16)},
+ uj:{id:'uj',name:'우장산아이파크e편한세상',py:'32PY',n:32,area:'서울 강서',cover:'uj09',hero:'uj09',line:'우드 바닥과 라인 조명으로 정돈한 거실',oh:'172566',all:rng('uj',1,16)},
+ dm:{id:'dm',name:'DMC래미안e편한세상',py:'33PY',n:33,area:'서울',cover:'dm06',hero:'dm06',line:'밝은 우드와 화이트로 완성한 리모델링',oh:'179743',all:rng('dm',1,16,[14])},
+ sr:{id:'sr',name:'은평뉴타운 상림마을',py:'41PY',n:41,area:'서울 은평',cover:'sr08',hero:'sr08',line:'밝은 타일 바닥과 라인 조명의 화이트 하우스',oh:'153085',all:rng('sr',1,16)},
+ ur:{id:'ur',name:'마포 우림아파트',py:'32PY',n:32,area:'서울 마포',cover:'ur07',hero:null,line:'그레이지 벽과 간접조명으로 차분하게',oh:'169332',all:rng('ur',1,16)}
+};
+var ORDER=['mw','ds','mi','bl','uj','dm','sr','ur'];
+var LIGHT=[['ds06','ds07','당산 동부센트레빌'],['uj08','uj09','우장산아이파크e편한세상'],['mw05','mw06','망원 동원데자뷰']];
+var ROOMS=[['living','거실'],['kitchen','주방'],['hall','현관 · 복도'],['bath','욕실'],['room','방']];
+var RT={};
+function tag(room,keys){keys.forEach(function(k){RT[k]=room})}
+tag('hall',['ds02','ds03','ds04','ds05','bl01','bl02','bl03','bl04','dm02','dm03','dm04','dm05','mi03','mi04','uj02','uj03','uj04','uj05','uj06','uj07','ur02','ur03','ur04','ur05','ur06','sr02','sr03','sr04','sr05','mw01','mw04']);
+tag('kitchen',['ds01','ds09','bl05','bl06','bl09','bl11','bl12','dm01','dm15','dm16','mi10','mi11','mi12','mi13','uj01','uj14','uj15','uj16','ur13','ur14','ur15','sr10','sr11','sr12','mw12','mw13','mw14','mw15','mw16']);
+tag('bath',['bl13','bl14','bl15','bl16','sr13','sr14','sr15','sr16']);
+tag('room',['mi14','mi15','mi16','ur09','ur10']);
+Object.keys(DIM).forEach(function(k){if(!RT[k])RT[k]='living'});
+var LOGO_L='<img src="img/logo-light.png" alt="디자인SA" width="900" height="242">',LOGO_D='<img src="img/logo-dark.png" alt="디자인SA" width="900" height="242">';
+var BULB='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.3 1.1 2.2h5c0-.9.4-1.6 1.1-2.2A6 6 0 0 0 12 3z"/></svg>';
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function R(k){var d=DIM[k];return d?d[0]+'/'+d[1]:'3/2'}
+function src(k){return 'src="img/'+k+'.jpg"'+(HX[k]?' srcset="img/'+k+'.jpg 2000w, img/'+k+'x.jpg 2560w" sizes="100vw"':'')}
+function im(k,alt,cls,eager){var d=DIM[k]||[3,2];return '<img '+src(k)+' alt="'+esc(alt||'')+'" width="'+d[0]+'" height="'+d[1]+'"'+(eager?'':' loading="lazy"')+' decoding="async"'+(cls?' class="'+cls+'"':'')+'>'}
+function lt(pair,alt){return '<div class="lt"><img class="off-img" src="img/'+pair[0]+'.jpg" alt="'+esc(alt||'')+'" loading="lazy"><img class="on-img" src="img/'+pair[1]+'.jpg" alt="" loading="lazy"><button class="bulb" aria-pressed="false" aria-label="조명 켜기/끄기">'+BULB+'</button></div>'}
+function ext(u,t){return '<a href="'+u+'" target="_blank" rel="noopener">'+t+' ↗</a>'}
+function pick(p,room,n){return p.all.filter(function(k){return RT[k]===room}).slice(0,n||99)}
+function foot(dark){return '<footer class="foot wrap"><img class="flogo" src="img/'+(dark?'logo-light':'logo-dark')+'.png" alt="디자인SA"><div class="biz"><span>상호 디자인 SA</span><span>대표 김형준</span><span>사업자등록번호 105-11-95453</span></div><div class="biz"><span>서울특별시 마포구 월드컵로29길 27, 1층 (망원동)</span></div><div class="biz"><span>T. <a href="tel:023350086">'+TEL+'</a></span><span>M. <a href="tel:01032520086">'+PHONE+'</a></span><span>F. 02-324-2530</span><span>E. design_sa_@naver.com</span></div><div class="ext" style="margin-top:10px">'+ext(OH,'오늘의집')+ext(BLOG,'블로그')+'</div><div style="margin-top:10px;opacity:.6">© '+new Date().getFullYear()+' DESIGN SA Interior Studio</div></footer>'}
+function steps(){var s=[['상담','단지명·평형·생활 방식과 예산을 먼저 듣고, 비슷한 평형의 사례를 함께 봅니다.'],['실측 · 설계','현장을 직접 재고 동선과 수납, 꼭 바꿔야 할 곳부터 정리합니다.'],['디자인 · 견적','자재와 색을 고르고 항목별로 나눈 견적을 드립니다.'],['시공 · A/S','공정별 진행 상황을 공유하고, 입주 후에도 살핍니다.']];return s}
+function stepsA(){return '<div class="steps">'+steps().map(function(x,i){return '<div><b>0'+(i+1)+'</b><h3>'+x[0]+'</h3><p>'+x[1]+'</p></div>'}).join('')+'</div>'}
+var REV_Q='제가 원하는 것과 현실적으로 가능한 부분을 잘 조율해주셔서 큰 어려움 없이 진행할 수 있었습니다.';
+var CHIPS=['시공 결과가 좋아요 · 15','의견 수용을 잘해줘요 · 11','AS 잘해줘요 · 9'];
+function form(){return '<form class="cform" onsubmit="return sendForm(this)"><label>성함<input name="n" required autocomplete="name"></label><label>연락처<input name="t" required inputmode="tel" autocomplete="tel"></label><label>아파트 · 단지명<input name="a" placeholder="예) 망원 동원데자뷰"></label><label>평형<input name="p" placeholder="예) 32평"></label><label>공사 범위<select name="s"><option>전체 리모델링</option><option>부분 시공 (주방·욕실 등)</option><option>아직 모르겠어요</option></select></label><label>희망 시기<select name="w"><option>1~2개월 안</option><option>3~6개월 안</option><option>6개월 이후</option><option>미정</option></select></label><label>예산 (선택)<select name="b"><option>선택 안 함</option><option>3천만 원 이하</option><option>3천~5천만 원</option><option>5천만 원~8천만 원</option><option>8천만 원 이상</option></select></label><label>통화 가능 시간 (선택)<input name="c" placeholder="예) 평일 오후 2~6시"></label><label class="full">메시지 (선택)<textarea name="m" placeholder="원하는 분위기, 꼭 바꾸고 싶은 곳, 입주 일정 등을 적어 주세요."></textarea></label><label class="agree full"><input type="checkbox" required> 상담을 위한 개인정보 수집·이용에 동의합니다.</label><button class="btn" type="submit">상담 신청하기</button></form><div class="msg" id="msg"><div class="t">대표님 휴대폰에는 이렇게 도착합니다 (예시 · 시안에서는 실제로 보내지 않습니다)</div><div class="phone"><div class="who"><i>SA</i><b>디자인SA 상담 알림</b></div><div class="bub" id="bub"></div></div></div><p class="explain">실제 구축 때는 이 폼이 <b>구글 시트에 저장</b>되고 대표님 휴대폰으로 <b>알림</b>이 갑니다. 카카오 알림톡은 발송 대행 서비스·카카오 채널·문구 승인이 필요하고 건당 비용이 듭니다. 카카오톡 "나에게 보내기"는 무료지만 받는 사람이 1명입니다.</p>'}
+function sendForm(f){var g=function(n){return (f.elements[n]&&f.elements[n].value)||'-'};document.getElementById('bub').textContent='[새 상담 신청]\n성함: '+g('n')+'\n연락처: '+g('t')+'\n단지: '+g('a')+' / '+g('p')+'\n공사 범위: '+g('s')+'\n희망 시기: '+g('w')+'\n예산: '+g('b')+'\n통화 가능: '+g('c')+'\n메시지: '+g('m');var m=document.getElementById('msg');m.classList.add('show');m.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});return false}
+function nextPrev(v,p){var i=ORDER.indexOf(p.id),a=P[ORDER[(i-1+ORDER.length)%ORDER.length]],b=P[ORDER[(i+1)%ORDER.length]];return '<nav class="pager"><a href="#'+v+'-'+a.id+'"><small>PREV</small>'+esc(a.name)+'</a><a href="#'+v+'-works"><small>LIST</small>전체 보기</a><a href="#'+v+'-'+b.id+'"><small>NEXT</small>'+esc(b.name)+'</a></nav>'}
+function ohLink(p){return 'https://ohou.se/projects/'+p.oh}
+
+/* ================= A : Signature ================= */
+function aTop(cur,solid){var m=[['about','회사소개'],['works','시공사례'],['contact','상담신청']];return '<header class="a-top wrap'+(solid?' solid':'')+'" id="atop"><a class="sm" href="#a">'+LOGO_L+'</a><nav>'+m.map(function(x){return '<a href="#a-'+x[0]+'"'+(cur===x[0]?' class="on"':'')+'>'+x[1]+'</a>'}).join('')+'<a class="opt" href="'+BLOG+'" target="_blank" rel="noopener">블로그</a><a class="opt" href="'+OH+'" target="_blank" rel="noopener">오늘의집</a></nav></header>'}
+function aTile(p){return '<a class="tile" href="#a-'+p.id+'" data-pop="'+p.id+'" data-v="a">'+im(p.cover,p.name)+'<span class="ov"><span class="lg">'+LOGO_L+'</span><span class="nm">'+esc(p.name)+'</span><span class="ln"></span><span class="py">'+p.py+' · '+esc(p.area)+'</span></span></a>'}
+function aFacts(){return '<div class="facts"><div><b>2006 —</b><span>마포 망원동에서 시작<br>(사업자등록 2006.05)</span></div><div><b>★ 4.9</b><span>오늘의집 계약자 리뷰 15건<br>(2026년 11월 기준)</span></div><div><b>52건</b><span>오늘의집 포트폴리오<br>(2026년 11월 기준)</span></div><div><b>서울 서북권</b><span>마포 · 은평 · 서대문<br>영등포 · 강서 아파트</span></div></div>'}
+function aReviews(){return '<section class="wrap sec"><div class="eyebrow">Reviews</div><h2 class="t">고객이 먼저 말해 준 것</h2><div class="rev"><div class="score"><b>4.9</b><span>오늘의집 계약자 리뷰 15건 · 2026년 11월 기준</span><div class="chips">'+CHIPS.map(function(c){return '<span>'+c+'</span>'}).join('')+'</div></div><div><blockquote>“'+REV_Q+'”</blockquote><cite>오늘의집 계약자 리뷰 중에서 · '+ext(OH,'리뷰 전체 보기')+'</cite></div></div></section>'}
+var V={};
+V.a={
+ home:function(){var hs=['mw05','ds07','mi01','bl10','uj09'];
+  return '<section class="a-hero" data-slides>'+hs.map(function(k,i){return '<div class="sl'+(i?'':' cur')+'">'+im(k,'디자인SA 시공 현장',null,i<2)+'</div>'}).join('')+'<h1 class="a-word">'+LOGO_L+'</h1><div class="a-copy"><p>내 집이라는 마음으로, 실력으로 보답합니다.</p></div><div class="a-dots">'+hs.map(function(k,i){return '<button aria-label="'+(i+1)+'번째 사진"'+(i?'':' class="on"')+'></button>'}).join('')+'</div><div class="a-bar wrap"><a class="sm" href="#a">'+LOGO_L+'</a><nav><a href="#a-about">회사소개</a><a href="#a-works">시공사례</a><a href="#a-contact">상담신청</a><a href="'+BLOG+'" target="_blank" rel="noopener">블로그</a><a href="'+OH+'" target="_blank" rel="noopener">오늘의집</a></nav><a class="rt" href="#a-contact">상담 문의 <i></i></a></div></section>'+aTop('')+
+  '<section class="wrap sec a-intro"><div class="eyebrow">DESIGN SA · INTERIOR STUDIO</div><q style="margin-top:22px">“꼭 필요한 곳에, 정확하게.”</q><p>2006년부터 서울 마포 망원동에서 아파트 인테리어를 해 왔습니다. 화려함보다 오래 살기 편한 구조와 마감을 먼저 생각합니다.</p></section>'+
+  '<section class="wrap sec"><div class="a-head"><div><div class="eyebrow">Works</div><h2 class="t" style="margin-bottom:0">시공 사례</h2></div><a class="more" href="#a-works">ALL WORKS</a></div><div class="grid" style="margin-top:30px">'+ORDER.slice(0,6).map(function(id){return aTile(P[id])}).join('')+'</div></section>'+
+  '<section class="wrap sec"><div class="eyebrow">Lighting</div><h2 class="t">조명 하나로 달라지는 집</h2><div class="lights">'+LIGHT.map(function(l){return lt(l,l[2])}).join('')+'</div><p class="strip-hint" style="margin-top:12px">사진에 마우스를 올리면(휴대폰은 꾹 누르면) 조명이 켜집니다. 전구 버튼으로 켠 채로 둘 수 있습니다.</p></section>'+
+  '<section class="wrap sec"><div class="a-about"><div><div class="eyebrow">About</div><h2 class="t">과한 비용 대신,<br>오래 쓰는 마감에.</h2><p style="opacity:.75">디자인SA는 서울 서북권 아파트를 중심으로 전체 리모델링과 부분 시공을 합니다. 원하는 분위기와 현실적인 예산 사이에서 무엇을 남기고 무엇을 바꿀지 먼저 정리해 드립니다.</p><div style="margin-top:34px">'+aFacts()+'</div></div>'+im('mw12','망원 동원데자뷰 주방')+'</div></section>'+
+  '<section class="wrap sec"><div class="eyebrow">Process</div><h2 class="t">진행 절차</h2>'+stepsA()+'</section>'+aReviews()+
+  '<section class="a-cta">'+im('mi01','')+'<div><h2>우리 집도 이렇게 바뀔 수 있을까요?</h2><a class="btn" href="#a-contact">상담 신청</a></div></section>'+foot(true)},
+ works:function(){return aTop('works',true)+'<section class="wrap sec" style="padding-top:60px"><div class="eyebrow">Works</div><h2 class="t">시공 사례</h2><div class="grid">'+ORDER.map(function(id){return aTile(P[id])}).join('')+'</div><p class="strip-hint" style="margin-top:18px">오늘의집에 올린 포트폴리오 52건 중 8곳을 먼저 담았습니다. 나머지 현장은 구축 때 함께 옮깁니다.</p></section>'+foot(true)},
+ about:function(){return aTop('about',true)+'<section class="wrap sec" style="padding-top:60px"><div class="a-about"><div><div class="eyebrow">About</div><h2 class="t">내 집이라는 마음으로,<br>실력으로 보답합니다.</h2><p style="opacity:.75">디자인SA는 2006년 마포 망원동에서 시작한 인테리어 스튜디오입니다. 인테리어 시공과 가구, 디자인 설계를 함께 하며, 서울 서북권 아파트의 전체 리모델링을 주로 합니다.</p><p style="opacity:.75;margin-top:14px">대표 김형준 · <span class="blank">[경력 · 자격 · 소개 한 줄]</span></p></div>'+im('ds09','당산 동부센트레빌 주방')+'</div></section><section class="wrap sec">'+aFacts()+'</section><section class="wrap sec"><div class="eyebrow">Process</div><h2 class="t">진행 절차</h2>'+stepsA()+'</section>'+aReviews()+'<div style="height:100px"></div>'+foot(true)},
+ contact:function(){return aTop('contact',true)+'<section class="wrap sec" style="padding-top:60px"><div class="eyebrow">Contact</div><h2 class="t">상담 신청</h2><p style="opacity:.7;margin:-10px 0 30px">전화 <a href="tel:023350086"><b>'+TEL+'</b></a> · 휴대폰 <a href="tel:01032520086"><b>'+PHONE+'</b></a> · 서울 마포구 월드컵로29길 27, 1층</p>'+form()+'</section>'+foot(true)},
+ project:function(p){var g=p.all.filter(function(k){return k!==p.hero});var lp=LIGHT.filter(function(l){return l[0].slice(0,2)===p.id});
+  return aTop('works',true)+(p.hero?'<div class="pj-hero">'+im(p.hero,p.name,null,true)+'</div>':'')+'<section class="wrap"><div class="pj-head"><div><div class="eyebrow">'+esc(p.area)+'</div><h1>'+esc(p.name)+' '+p.py+'</h1><p style="opacity:.7;margin-top:8px">'+esc(p.line)+'</p><dl class="pj-meta"><div><dt>LOCATION</dt><dd>'+esc(p.area)+'</dd></div><div><dt>SIZE</dt><dd>'+p.py+'</dd></div><div><dt>TYPE</dt><dd>아파트</dd></div><div><dt>PERIOD</dt><dd><span class="blank">[공사 기간]</span></dd></div></dl></div><a class="btn" href="'+ohLink(p)+'" target="_blank" rel="noopener">오늘의집에서 보기 ↗</a></div></section>'+
+  (lp.length?'<section class="wrap" style="margin-top:40px"><div class="lights" style="grid-template-columns:1fr">'+lp.map(function(l){return lt(l,l[2])}).join('')+'</div></section>':'')+
+  '<section class="wrap" style="margin-top:40px"><div class="gal">'+g.map(function(k){return im(k,p.name)}).join('')+'</div>'+nextPrev('a',p)+'</section>'+foot(true)}
+};
+
+/* ================= B : Practical Home ================= */
+function bTop(cur){var m=[['works','시공사례'],['process','진행 방법'],['about','회사소개'],['contact','상담신청']];return '<header class="b-top wrap"><a class="lg" href="#b">'+LOGO_D+'</a><nav>'+m.map(function(x){return '<a href="#b-'+x[0]+'"'+(cur===x[0]?' class="on"':'')+'>'+x[1]+'</a>'}).join('')+'</nav><a class="b-call" href="tel:01032520086">📞 '+PHONE+'</a></header>'}
+function bDock(){return '<div class="b-dock"><a href="tel:01032520086">전화</a><a href="sms:01032520086">문자</a><a class="pri" href="#b-contact">상담 신청</a></div>'}
+function band(n){return n<30?'20':n<40?'30':'40'}
+function bCard(p){return '<a class="b-card" href="#b-'+p.id+'" data-band="'+band(p.n)+'"><div class="ph">'+im(p.cover,p.name)+'</div><div class="tx"><h3>'+esc(p.name)+'</h3><p>'+esc(p.line)+'</p><div class="tags"><span>'+p.n+'평</span><span>'+esc(p.area)+'</span><span>아파트</span></div></div></a>'}
+function bFilter(sel){var f=[['all','전체'],['30','30평대'],['40','40평대']];return '<div class="b-filter" data-filter>'+f.map(function(x){return '<button data-f="'+x[0]+'"'+(x[0]===(sel||'all')?' class="on"':'')+'>'+x[1]+'</button>'}).join('')+'</div>'}
+function bSteps(){return '<div class="b-steps">'+steps().map(function(x,i){return '<div><b>'+(i+1)+'</b><h3>'+x[0]+'</h3><p>'+x[1]+'</p></div>'}).join('')+'</div>'}
+function bPrep(){return '<div class="b-box"><h3>상담 전에 준비하면 좋아요</h3><ul class="b-check"><li>단지명과 평형<small>같은 평면의 사례를 바로 찾아 보여 드릴 수 있어요.</small></li><li>공사 범위<small>전체 리모델링인지, 주방·욕실 같은 부분 시공인지.</small></li><li>입주 · 이사 일정<small>공사 기간을 거꾸로 계산해 일정을 잡습니다.</small></li><li>마음에 드는 사진 몇 장<small>오늘의집·블로그에서 저장한 사진이면 충분해요.</small></li></ul></div>'}
+function bRev(){return '<div class="b-box b-rev"><h3>오늘의집 계약자 리뷰</h3><div class="big">4.9 <span style="font-size:16px;font-weight:500;opacity:.6">/ 5 · 리뷰 15건</span></div><div class="chips">'+CHIPS.map(function(c){return '<span>'+c+'</span>'}).join('')+'</div><blockquote>“'+REV_Q+'”</blockquote><cite>2026년 11월 기준 · '+ext(OH,'리뷰 전체 보기')+'</cite></div>'}
+function bCta(){return '<section class="wrap"><div class="b-cta"><div><h2>우리 집 평형부터 알려 주세요.</h2><p style="opacity:.75;margin-top:6px">비슷한 평형 사례와 함께 상담해 드립니다.</p></div><div class="row"><a class="pri" href="#b-contact">상담 신청</a><a href="tel:01032520086">전화 '+PHONE+'</a></div></div></section>'}
+V.b={
+ home:function(){var p=P.mw;return bTop('')+'<section class="wrap b-hero"><div><div class="eyebrow" style="letter-spacing:.12em">마포 · 은평 · 서대문 아파트 인테리어</div><h1 style="margin-top:14px">우리 집과 <em>같은 평형</em>부터<br>먼저 보세요.</h1><p class="sub">2006년부터 마포 망원동에서. 꼭 필요한 공사에 예산을 쓰고, 오래 쓰는 마감으로 정리합니다.</p><div class="b-py"><a href="#b-works-30"><b>30평대</b><span>'+ORDER.filter(function(i){return band(P[i].n)==='30'}).length+'곳 보기</span></a><a href="#b-works-40"><b>40평대</b><span>'+ORDER.filter(function(i){return band(P[i].n)==='40'}).length+'곳 보기</span></a><a href="#b-works"><b>전체</b><span>'+ORDER.length+'곳 보기</span></a></div><div class="b-quick"><a class="pri" href="#b-contact">무료 상담 신청</a><a href="'+OH+'" target="_blank" rel="noopener">오늘의집 리뷰 보기 ↗</a></div></div><a class="b-ph" href="#b-mw">'+im('mw05','망원 동원데자뷰 거실',null,true)+'<span class="badge"><b>★ 4.9</b>오늘의집 리뷰 15건</span><span class="cap"><span><b>'+esc(p.name)+'</b><br><span style="opacity:.65">'+p.n+'평 · '+esc(p.area)+'</span></span><span>자세히 →</span></span></a></section>'+
+  '<section class="wrap"><div class="b-stats"><div><b>2006년~</b><span>사업자등록 · 마포 망원동</span></div><div><b>52건</b><span>오늘의집 포트폴리오 (2026.11)</span></div><div><b>★ 4.9</b><span>계약자 리뷰 15건 (2026.11)</span></div><div><b>A/S</b><span>리뷰 9건이 "AS 잘해줘요"</span></div></div></section>'+
+  '<section class="wrap sec"><h2 class="t">평형별 시공 사례</h2><p class="lead">비슷한 평형의 집을 먼저 보시면 우리 집 공사 범위를 정하기 쉬워요.</p>'+bFilter()+'<div class="b-cards" data-list>'+ORDER.map(function(id){return bCard(P[id])}).join('')+'</div></section>'+
+  '<section class="wrap sec"><h2 class="t">이렇게 진행합니다</h2><p class="lead">처음 인테리어를 하셔도 순서대로 따라오시면 됩니다.</p>'+bSteps()+'</section>'+
+  '<section class="wrap sec"><div class="b-two">'+bPrep()+bRev()+'</div></section>'+bCta()+foot()+bDock()},
+ works:function(sel){return bTop('works')+'<section class="wrap" style="padding-top:44px"><h2 class="t">시공 사례</h2><p class="lead">오늘의집 포트폴리오 52건 중 8곳을 먼저 담았습니다.</p>'+bFilter(sel)+'<div class="b-cards" data-list>'+ORDER.map(function(id){return bCard(P[id])}).join('')+'</div></section>'+bCta()+foot()+bDock()},
+ process:function(){return bTop('process')+'<section class="wrap" style="padding-top:44px"><h2 class="t">진행 방법</h2><p class="lead">상담부터 입주 후 A/S까지 네 단계입니다.</p>'+bSteps()+'</section><section class="wrap sec"><div class="b-two">'+bPrep()+bRev()+'</div></section>'+bCta()+foot()+bDock()},
+ about:function(){return bTop('about')+'<section class="wrap" style="padding-top:44px"><div class="b-two" style="align-items:center"><div><h2 class="t">내 집이라는 마음으로,<br>실력으로 보답합니다.</h2><p class="lead" style="margin-top:16px">디자인SA는 2006년 서울 마포 망원동에서 시작했습니다. 인테리어 시공과 가구, 디자인 설계를 함께 하며 마포·은평·서대문 등 서울 서북권 아파트를 주로 고칩니다.</p><p class="lead">대표 김형준 · <span class="blank">[경력 · 자격 · 소개 한 줄]</span></p></div><div class="b-ph" style="aspect-ratio:4/3">'+im('ds09','당산 동부센트레빌')+'</div></div></section><section class="wrap"><div class="b-stats"><div><b>2006년~</b><span>사업자등록 · 마포 망원동</span></div><div><b>52건</b><span>오늘의집 포트폴리오 (2026.11)</span></div><div><b>★ 4.9</b><span>계약자 리뷰 15건 (2026.11)</span></div><div><b>인테리어·가구</b><span>디자인 설계까지 한 곳에서</span></div></div></section>'+bCta()+foot()+bDock()},
+ contact:function(){return bTop('contact')+'<section class="wrap" style="padding-top:44px"><h2 class="t">상담 신청</h2><p class="lead" style="margin-bottom:28px">전화 <a href="tel:023350086"><b>'+TEL+'</b></a> · 휴대폰 <a href="tel:01032520086"><b>'+PHONE+'</b></a> · 평형과 단지명만 남겨 주셔도 됩니다.</p><div class="b-box">'+form()+'</div></section>'+foot()+bDock()},
+ project:function(p){var main=p.hero||p.cover;var g=p.all.filter(function(k){return k!==main});var same=ORDER.filter(function(i){return i!==p.id&&band(P[i].n)===band(p.n)}).slice(0,3);
+  return bTop('works')+'<section class="wrap b-pj-head"><div class="crumb"><a href="#b-works">시공사례</a> › '+band(p.n)+'평대</div><h1>'+esc(p.name)+' '+p.n+'평</h1><p class="lead">'+esc(p.line)+'</p><dl class="b-info"><div><dt>지역</dt><dd>'+esc(p.area)+'</dd></div><div><dt>평형</dt><dd>'+p.n+'평</dd></div><div><dt>주거 형태</dt><dd>아파트</dd></div><div><dt>공사 기간</dt><dd><span class="blank">[기간]</span></dd></div></dl><div class="b-main">'+im(main,p.name,null,true)+'</div></section><section class="wrap" style="margin-top:12px"><div class="gal">'+g.map(function(k){return im(k,p.name)}).join('')+'</div><p style="margin-top:14px"><a class="btn" style="border-radius:40px" href="'+ohLink(p)+'" target="_blank" rel="noopener">오늘의집에서 원본 보기 ↗</a></p></section>'+
+  (same.length?'<section class="wrap sec"><h2 class="t">같은 '+band(p.n)+'평대 사례</h2><div class="b-cards" style="margin-top:22px">'+same.map(function(i){return bCard(P[i])}).join('')+'</div></section>':'')+bCta()+foot()+bDock()}
+};
+
+/* ================= C : Room by Room ================= */
+function cTop(cur){return '<header class="c-top wrap"><a class="lg" href="#c">'+LOGO_D+'</a><nav><a href="#c-room-living"'+(cur==='room'?' class="on"':'')+'>공간별</a><a href="#c-works"'+(cur==='works'?' class="on"':'')+'>현장별</a><a class="opt" href="#c-about"'+(cur==='about'?' class="on"':'')+'>소개</a><a href="#c-contact"'+(cur==='contact'?' class="on"':'')+'>상담</a></nav></header>'}
+function roomAll(r){var out=[];ORDER.forEach(function(id){P[id].all.forEach(function(k){if(RT[k]===r)out.push([k,id])})});return out}
+var RCOVER={living:'ds07',kitchen:'mw12',hall:'bl01',bath:'bl13',room:'mi15'};
+function cRows(){return '<div class="c-rows">'+ORDER.map(function(id,i){var p=P[id];return '<a class="c-row" href="#c-'+id+'"><span class="no">'+(i<9?'0':'')+(i+1)+'</span><b>'+esc(p.name)+'</b><span>'+p.n+'평</span><span class="ar">'+esc(p.area)+'</span><span class="ths">'+['living','kitchen','hall'].map(function(r){var k=pick(p,r,1)[0];return k?'<img src="img/'+k+'.jpg" alt="" loading="lazy">':''}).join('')+'</span></a>'}).join('')+'</div>'}
+function cCta(){return '<section class="c-cta"><h2>보고 싶은 공간이<br>정해지셨나요?</h2><a class="btn" href="#c-contact">상담 신청 →</a></section>'}
+V.c={
+ home:function(){return cTop('')+'<section class="wrap c-hero"><h1>현관부터 욕실까지,<br><span>공간별로</span> 비교하세요.</h1><div class="sub"><p>디자인SA가 고친 서울 서북권 아파트 '+ORDER.length+'곳의 사진을 거실·주방·현관·욕실·방으로 나눠 모았습니다.</p><p style="text-align:right"><b>2006년~</b> 마포 망원동<br><b>★ 4.9</b> 오늘의집 리뷰 15건 (2026.11)</p></div><div class="c-rooms">'+ROOMS.map(function(r){return '<a class="c-room" href="#c-room-'+r[0]+'">'+im(RCOVER[r[0]],r[1])+'<span class="lb"><b>'+r[1]+'</b><span>'+roomAll(r[0]).length+'장 →</span></span></a>'}).join('')+'</div></section>'+
+  '<section class="wrap sec"><div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap"><h2 class="t">주방만 모아 보면</h2><a href="#c-room-kitchen" style="font-weight:700;border-bottom:2px solid">주방 전체 보기 →</a></div><div class="c-cmp">'+['mw','bl','uj','mi'].map(function(id){var k=pick(P[id],'kitchen',1)[0];return '<a href="#c-'+id+'">'+im(k,P[id].name+' 주방')+'<span>'+esc(P[id].name)+' · '+P[id].n+'평</span></a>'}).join('')+'</div></section>'+
+  '<section class="wrap sec"><h2 class="t">현장별로 보기</h2>'+cRows()+'</section>'+
+  '<section class="wrap sec"><h2 class="t">숫자로 보는 디자인SA</h2><div class="c-num"><div><b>2006</b><span>마포 망원동에서 시작</span></div><div><b>52</b><span>오늘의집 포트폴리오 (2026.11)</span></div><div><b>4.9</b><span>계약자 리뷰 15건 평균 (2026.11)</span></div><div><b>4단계</b><span>상담 → 실측 → 견적 → 시공·A/S</span></div></div></section>'+cCta()+foot()},
+ room:function(r){var all=roomAll(r),nm=(ROOMS.filter(function(x){return x[0]===r})[0]||[r,r])[1];return cTop('room')+'<section class="wrap" style="padding-top:44px"><h2 class="t">'+nm+' <span style="opacity:.3">'+all.length+'</span></h2><div class="c-tabs">'+ROOMS.map(function(x){return '<a href="#c-room-'+x[0]+'"'+(x[0]===r?' class="on"':'')+'>'+x[1]+'</a>'}).join('')+'</div><div class="c-mas">'+all.map(function(a){return '<a href="#c-'+a[1]+'">'+im(a[0],P[a[1]].name+' '+nm)+'<span>'+esc(P[a[1]].name)+' · '+P[a[1]].n+'평</span></a>'}).join('')+'</div></section>'+cCta()+foot()},
+ works:function(){return cTop('works')+'<section class="wrap" style="padding-top:44px"><h2 class="t">현장별로 보기</h2><p style="opacity:.6;margin-top:8px">오늘의집 포트폴리오 52건 중 8곳을 먼저 담았습니다.</p>'+cRows()+'</section>'+cCta()+foot()},
+ about:function(){return cTop('about')+'<section class="wrap c-hero"><h1>내 집이라는 마음으로,<br><span>실력으로</span> 보답합니다.</h1><div class="sub"><p>디자인SA는 2006년 서울 마포 망원동에서 시작했습니다. 인테리어 시공과 가구, 디자인 설계를 함께 하며 서울 서북권 아파트를 주로 고칩니다. 대표 김형준 · <span class="blank">[경력 · 자격]</span></p></div></section><section class="wrap sec"><h2 class="t">진행 절차</h2><div style="margin-top:26px">'+stepsA()+'</div></section><section class="wrap sec"><h2 class="t">고객 리뷰</h2><div class="c-num"><div><b>4.9</b><span>평균 · 15건 (2026.11)</span></div>'+CHIPS.map(function(c){var a=c.split(' · ');return '<div><b>'+a[1]+'</b><span>'+a[0]+'</span></div>'}).join('')+'</div><p style="margin-top:26px;font-size:18px;max-width:800px">“'+REV_Q+'”</p><p style="opacity:.6;font-size:13px;margin-top:6px">오늘의집 계약자 리뷰 중에서 · '+ext(OH,'전체 보기')+'</p></section>'+cCta()+foot()},
+ contact:function(){return cTop('contact')+'<section class="wrap" style="padding-top:44px"><h2 class="t">상담 신청</h2><p style="opacity:.7;margin:10px 0 30px">전화 <a href="tel:023350086"><b>'+TEL+'</b></a> · 휴대폰 <a href="tel:01032520086"><b>'+PHONE+'</b></a></p>'+form()+'</section>'+foot()},
+ project:function(p){return cTop('works')+'<section class="wrap c-pj"><h1>'+esc(p.name)+'</h1><div class="meta"><div><span>평형</span>'+p.n+'평</div><div><span>지역</span>'+esc(p.area)+'</div><div><span>형태</span>아파트</div><div><span>기간</span><span class="blank" style="opacity:1;margin:0">[기간]</span></div><div><a href="'+ohLink(p)+'" target="_blank" rel="noopener" style="border-bottom:2px solid">오늘의집 ↗</a></div></div><p style="margin-top:12px;opacity:.7">'+esc(p.line)+'</p>'+ROOMS.map(function(r){var ks=pick(p,r[0]);if(!ks.length)return '';return '<div class="c-sec"><h3>'+r[1]+'<small>'+ks.length+'장</small></h3><div class="ims">'+ks.map(function(k){return '<img src="img/'+k+'.jpg" alt="'+esc(p.name+' '+r[1])+'" loading="lazy" style="--r:'+R(k)+'">'}).join('')+'</div></div>'}).join('')+nextPrev('c',p)+'</section>'+cCta()+foot()}
+};
+
+/* ================= landing ================= */
+function landing(){var c=[['a','A','Signature','린앤제이 사이트 구조 그대로, 첫 화면은 큰 현장 사진 위에 디자인SA 로고를 크게 올리고 아래에 어두운 메뉴 띠를 둔 고급형 구성입니다.','mw05'],['b','B','Practical Home','“우리 집 평형부터.” 30평대·40평대로 사례를 바로 고르고, 전화·문자 버튼이 늘 보이는 실용형 구성입니다.','uj09'],['c','C','Room by Room','거실·주방·현관·욕실·방, 공간별로 여러 현장을 나란히 비교해 보는 구성입니다. 굵은 고딕 글씨의 깔끔한 화면.','mw12']];
+ return '<div class="land"><div class="lg">'+LOGO_L+'</div><h1>디자인SA 홈페이지 시안</h1><p class="sub">오늘의집에 올리신 현장 사진으로 세 가지 방향을 만들었습니다. 카드를 눌러 각 시안의 첫 화면부터 시공사례·현장 상세·상담 페이지까지 직접 둘러보세요.</p><div class="cards">'+c.map(function(x){return '<a class="card" href="#'+x[0]+'"><div class="ph">'+im(x[4],'')+'<b>시안 '+x[1]+'</b></div><div class="tx"><h2><small>DRAFT '+x[1]+'</small>'+x[2]+'</h2><p>'+x[3]+'</p><div class="go">시안 '+x[1]+' 보기 →</div></div></a>'}).join('')+'</div><div class="howto"><div><b>조명 사진</b><br>시안 A의 조명 사진은 마우스를 올리거나 꾹 누르면 불이 켜집니다.</div><div><b>노란 칸</b><br>[공사 기간]처럼 노란 칸은 대표님께 받아 채울 내용입니다.</div><div><b>돌아가기</b><br>왼쪽 아래 “← 시안 목록”을 누르면 이 화면으로 돌아옵니다.</div></div><p class="lfoot">시안 제작 DNA LABS · 사진 출처: 디자인SA 오늘의집 포트폴리오 · 시안은 검색에 노출되지 않습니다.</p></div>'}
+
+/* ================= router ================= */
+var app=document.getElementById('app'),timers=[],offs=[];
+function render(){timers.forEach(clearInterval);timers=[];offs.forEach(function(f){f()});offs=[];
+ var h=decodeURIComponent((location.hash||'').replace('#','')),parts=h.split('-'),v=parts[0],pg=parts[1]||'home',html;
+ document.body.className='';
+ if(!V[v])html=landing();
+ else{var M=V[v];document.body.className='v'+v;
+  if(pg==='works')html=M.works(parts[2]);else if(pg==='room'&&M.room)html=M.room(parts[2]||'living');
+  else if(pg!=='home'&&pg!=='project'&&pg!=='room'&&M[pg])html=M[pg]();
+  else if(P[pg])html=M.project(P[pg]);else html=M.home();
+  html+='<a class="back" href="#home">← 시안 목록</a>'}
+ app.innerHTML=html;wire(app);window.scrollTo(0,0)}
+window.addEventListener('hashchange',render);
+var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function wire(root){
+ root.querySelectorAll('.lt').forEach(function(el){var b=el.querySelector('.bulb'),hold=null,block=false;
+  el.addEventListener('mouseenter',function(){if(!block)el.classList.add('on')});
+  el.addEventListener('mouseleave',function(){el.classList.remove('on');block=false});
+  el.addEventListener('touchstart',function(e){if(e.target.closest('.bulb'))return;hold=setTimeout(function(){el.classList.add('on')},280)},{passive:true});
+  ['touchend','touchcancel','touchmove'].forEach(function(t){el.addEventListener(t,function(){clearTimeout(hold);el.classList.remove('on')},{passive:true})});
+  el.addEventListener('contextmenu',function(e){e.preventDefault()});
+  b.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();var p=!el.classList.contains('pin');el.classList.toggle('pin',p);b.setAttribute('aria-pressed',p);if(!p){el.classList.remove('on');block=true}})});
+ root.querySelectorAll('[data-pop]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();openPop(a.dataset.v,P[a.dataset.pop])})});
+ var sl=root.querySelector('[data-slides]');if(sl){var ss=sl.querySelectorAll('.sl'),ds=sl.querySelectorAll('.a-dots button'),c=0;function go(n){ss[c].classList.remove('cur');ds[c].classList.remove('on');c=(n+ss.length)%ss.length;ss[c].classList.add('cur');ds[c].classList.add('on')}ds.forEach(function(d,i){d.addEventListener('click',function(){go(i)})});if(!RM)timers.push(setInterval(function(){go(c+1)},6000));
+  var tp=root.querySelector('#atop');if(tp){var f=function(){tp.classList.toggle('show',window.scrollY>sl.offsetHeight-80)};window.addEventListener('scroll',f,{passive:true});offs.push(function(){window.removeEventListener('scroll',f)});f()}}
+ var fl=root.querySelector('[data-filter]');if(fl){var list=root.querySelector('[data-list]');function ap(f){fl.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x.dataset.f===f)});list.querySelectorAll('.b-card').forEach(function(cd){cd.hidden=!(f==='all'||cd.dataset.band===f)})}fl.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){ap(b.dataset.f)})});ap((fl.querySelector('.on')||{}).dataset?fl.querySelector('.on').dataset.f:'all')}
+}
+var pop=document.getElementById('pop');
+function openPop(v,p){var k=p.hero||p.cover;pop.querySelector('.im').src='img/'+k+(HX[k]?'x':'')+'.jpg';pop.querySelector('.im').alt=p.name;pop.querySelector('b').textContent=p.name+' · '+p.py;pop.querySelector('small').textContent=p.area+' · '+p.line;pop.querySelector('.gol').href='#'+v+'-'+p.id;pop.classList.add('open');pop.querySelector('.x').focus()}
+function closePop(){pop.classList.remove('open')}
+pop.addEventListener('click',function(e){if(e.target===pop||e.target.closest('.x')||e.target.closest('.gol'))closePop()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closePop()});
+render();
+</script>
+</body>
+</html>
